@@ -20,12 +20,12 @@
     '.sc-eyebrow', '.sc-title', '.sc-intro', '.sc-actions', '.sc-note',
     '.sim-text', '.sim-points', '.faq-intro', '.faq-help',
     '.blog-head', '.blog-tabs', '.blog-body', '.blog-note',
-    '.pt-nav', '.pt-panels', '.np-cols', '.np-foot', '.fonte', '.qz', '.letters', '.ph-search',
+    '.pt-nav', '.pt-panels', '.np-table', '.np-foot', '.fonte', '.qz', '.letters', '.ph-search',
     '.ev-eyebrow', '.ev-sub', '.type-buttons', '.panels', '.ft-top', '.ft-cols', '.ct-form'
   ];
   // grupos de cards: aparecem um depois do outro (efeito cascata)
   var GRIDS = [
-    '.gl-grid > *', '.canais > *', '.pt-grid > *', '.np-list > *', '.terms > *', '.gd-steps > *', '.gd-tips > *',
+    '.gl-grid > *', '.canais > *', '.pt-grid > *', '.terms > *', '.gd-steps > *', '.gd-tips > *',
     '.gd-stats > *', '.sc-cards > *', '.faq-list > *', '.hf-benefits > *', '.ev-grid > *', '.pills > *', '.ct-side > *'
   ];
   var SKIP = '.site-header, .pa, .blog-track, .mock *, .gl-sum';

@@ -80,8 +80,19 @@
 <section class="np np2">
   <div class="container">
     <div class="sh"><h2>Evite × <span>Prefira</span></h2><p>Situações comuns e a atitude mais segura.</p></div>
-    <div class="np-cols" aria-hidden="true"><span>Situação</span><span>Evite</span><span>Prefira</span></div>
-    <ul class="np-list" aria-label="Evite e prefira"><li class="np-item"><h3 class="np-sit">Criar senha</h3><p class="np-bad">“123456” ou data de nascimento</p><p class="np-good">Frase longa e única por conta</p></li><li class="np-item"><h3 class="np-sit">Receber link</h3><p class="np-bad">Clicar sem conferir</p><p class="np-good">Conferir ou digitar o site oficial</p></li><li class="np-item"><h3 class="np-sit">Código por SMS</h3><p class="np-bad">Passar para quem pediu</p><p class="np-good">Nunca compartilhar</p></li><li class="np-item"><h3 class="np-sit">Wi-Fi público</h3><p class="np-bad">Acessar o banco</p><p class="np-good">Usar dados móveis</p></li><li class="np-item"><h3 class="np-sit">Comprar online</h3><p class="np-bad">Pix para loja desconhecida</p><p class="np-good">Pesquisar a loja e pagar com proteção</p></li></ul>
+    <!-- <table>: tabela; <thead> = cabeçalho, <tbody> = linhas; <th> = título da coluna ou da linha, <td> = célula -->
+    <table class="np-table">
+      <caption class="sr-only">Evite e prefira: situações comuns e a atitude mais segura</caption>
+      <colgroup><col class="c-sit"><col class="c-bad"><col></colgroup>
+      <thead><tr><th scope="col">Situação</th><th scope="col">Evite</th><th scope="col">Prefira</th></tr></thead>
+      <tbody>
+        <tr><th scope="row" class="np-sit">Criar senha</th><td class="np-bad">“123456” ou data de nascimento</td><td class="np-good">Frase longa e única por conta</td></tr>
+        <tr><th scope="row" class="np-sit">Receber link</th><td class="np-bad">Clicar sem conferir</td><td class="np-good">Conferir ou digitar o site oficial</td></tr>
+        <tr><th scope="row" class="np-sit">Código por SMS</th><td class="np-bad">Passar para quem pediu</td><td class="np-good">Nunca compartilhar</td></tr>
+        <tr><th scope="row" class="np-sit">Wi-Fi público</th><td class="np-bad">Acessar o banco</td><td class="np-good">Usar dados móveis</td></tr>
+        <tr><th scope="row" class="np-sit">Comprar online</th><td class="np-bad">Pix para loja desconhecida</td><td class="np-good">Pesquisar a loja e pagar com proteção</td></tr>
+      </tbody>
+    </table>
     <div class="np-foot"><div><h3>Pronto para testar?</h3><p>Faça a simulação e veja se você reconhece os sinais.</p></div><a class="btn btn-light np-go" href="simulacao.html">Começar <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     <p class="fonte">Quer se aprofundar? Leia a <a href="https://cartilha.cert.br/" target="_blank" rel="noopener">Cartilha de Segurança do CERT.br</a>.</p>
   </div>

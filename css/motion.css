@@ -63,7 +63,7 @@ html{scroll-padding-top:88px}
 
 /* :active = no momento do clique -> o botão encolhe um pouco (scale:.97), como se fosse apertado */
 .btn:active,.hf-btn:active,.sc-btn:active,.mf-btn:active,.pa-btn:active,.qz-btn:active,.np-go:active,.blog-tab:active,.type-btn:active{translate:0 0;scale:.97}
-.gl-card,.canal,.pt-link,.np-item,.term,.faq-item,.post,.ev-card{transition:transform .35s cubic-bezier(.22,.7,.2,1),border-color .3s,box-shadow .35s,background .3s}
+.gl-card,.canal,.pt-link,.term,.faq-item,.post,.ev-card{transition:transform .35s cubic-bezier(.22,.7,.2,1),border-color .3s,box-shadow .35s,background .3s}
 .gl-card:hover,.canal:hover,.post:hover{box-shadow:0 18px 44px rgba(0,0,0,.55),0 0 36px rgba(30,75,255,.22)}
 .gl-card .gl-img,.post-photo,.post img{transition:transform .8s cubic-bezier(.22,.7,.2,1)}
 

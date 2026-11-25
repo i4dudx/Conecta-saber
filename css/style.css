@@ -1008,34 +1008,38 @@ body.inner .qz .qz-title{color:#1e4bff}
 .np{position:relative;isolation:isolate;overflow-x:clip}
 .np::before{content:"";position:absolute;z-index:-1;inset:0;background:radial-gradient(45% 55% at 0% 100%,rgba(30,75,255,.28),transparent 70%);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 25%,#000 75%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 25%,#000 75%,transparent)}
 
-/* Na prática — composição editorial: texto à esquerda, situações à direita */
-.np-list{list-style:none;margin:0;padding:0;border-top:1px solid rgba(255,255,255,.18)}
-.np-item{padding:2.1rem 0 2.2rem;border-bottom:1px solid rgba(255,255,255,.1);display:grid;gap:.7rem}
-.np-sit{margin:0;font-size:.85rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#6f8dff}
-.np-bad{margin:0;font-size:1rem;color:#7d86a0;text-decoration-color:rgba(125,134,160,.5)}
-.np-good{margin:0;font-size:clamp(1.3rem,2.1vw,1.7rem);line-height:1.3;font-weight:600;letter-spacing:-.015em;color:#fff}
-body.inner .np-sit{color:#6f8dff}
-.np-bad{text-decoration:none}
-@media (max-width:900px){.np-list{order:2}
-}
+/* ---------- Evite × Prefira: tabela (situação | evite | prefira) ---------- */
 
-/* Na prática — tabela em linhas: situação | evite | prefira */
-.np2 .np-cols,.np2 .np-item{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr) minmax(0,1.4fr);column-gap:3rem;align-items:baseline}
-.np2 .np-cols{margin-top:2.4rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.18);font-size:.78rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#7d86a0}
-.np2 .np-cols span:last-child{color:#6f8dff}
-.np2 .np-list{border-top:0}
-.np2 .np-item{padding:1.8rem 0;gap:0 3rem}
-.np2 .np-sit{font-size:1.25rem;font-weight:600;letter-spacing:-.01em;text-transform:none;color:#fff}
-body.inner .np2 .np-sit{color:#fff}
-.np2 .np-bad{font-size:1.02rem;color:#8f98ae;text-decoration:line-through;text-decoration-color:rgba(143,152,174,.5)}
-.np2 .np-good{font-size:1.3rem;font-weight:600;color:#fff}
+/* border-collapse:collapse = as bordas das células viram uma linha só */
+.np-table{width:100%;margin-top:2.4rem;border-collapse:collapse;text-align:left}
+.np-table th,.np-table td{padding:1.8rem 3rem 1.8rem 0;vertical-align:baseline;border-bottom:1px solid rgba(255,255,255,.1)}
+.np-table td:last-child{padding-right:0}
+
+/* largura das colunas (a última ocupa o resto) */
+.np-table .c-sit{width:28.2%}
+.np-table .c-bad{width:33.7%}
+
+/* cabeçalho: letras pequenas e maiúsculas; "Prefira" em azul */
+.np-table thead th{padding-top:0;padding-bottom:1rem;border-bottom-color:rgba(255,255,255,.18);font-size:.78rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#7d86a0}
+.np-table thead th:last-child{color:#6f8dff}
+
+/* colunas: situação em branco, "evite" riscado e "prefira" em destaque */
+.np-sit{font-size:1.25rem;font-weight:600;line-height:1.25;letter-spacing:-.01em;color:#fff}
+.np-bad{font-size:1.02rem;line-height:1.6;color:#8f98ae;text-decoration:line-through;text-decoration-color:rgba(143,152,174,.5)}
+.np-good{font-size:1.3rem;font-weight:600;line-height:1.6;color:#fff}
+
 .np2 .np-foot{display:flex;align-items:center;justify-content:space-between;gap:2rem}
 .np2 .np-foot .btn{flex:none}
+
+/* celular: cada linha da tabela vira um bloco empilhado, com os rótulos "Evite" e "Prefira" */
 @media (max-width:760px){
-  .np2 .np-cols{display:none}
-  .np2 .np-item{grid-template-columns:1fr;row-gap:.5rem;padding:1.5rem 0}
-  .np2 .np-bad::before{content:"Evite  ";font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#7d86a0;text-decoration:none;display:inline-block;margin-right:.6rem}
-  .np2 .np-good::before{content:"Prefira  ";font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#6f8dff;display:inline-block;margin-right:.6rem}
+  .np-table,.np-table tbody,.np-table tr,.np-table th,.np-table td{display:block;width:auto}
+  .np-table thead{display:none}
+  .np-table tr{padding:1.5rem 0;border-bottom:1px solid rgba(255,255,255,.1)}
+  .np-table th,.np-table td{padding:0 0 .5rem;border:0}
+  .np-table td:last-child{padding-bottom:0}
+  .np-bad::before{content:"Evite";font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#7d86a0;text-decoration:none;display:inline-block;margin-right:.6rem}
+  .np-good::before{content:"Prefira";font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#6f8dff;display:inline-block;margin-right:.6rem}
   .np2 .np-foot{flex-direction:column;align-items:flex-start}
 }
 .np2 .sh h2 span{color:#1e4bff}
