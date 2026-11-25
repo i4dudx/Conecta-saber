@@ -64,8 +64,6 @@ function iniciarFormulario() {
       mostrar("Preencha todos os campos para continuar.", true);
       return;
     }
-    // campo isca: só robôs preenchem
-    if (form.website && form.website.value) return;
     const texto = "Olá! Vim pelo site Conecta Saber.\n\nNome: " + nome + "\nAssunto: " + assunto + "\n\n" + mensagem;
     // encodeURIComponent = transforma o texto (acentos, espaços, quebras de linha) num formato que pode ir no link
     const link = "https://wa.me/" + CONTATO_WHATSAPP + "?text=" + encodeURIComponent(texto);

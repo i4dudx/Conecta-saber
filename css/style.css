@@ -1263,7 +1263,6 @@ body.inner .ct h2{font-size:var(--fs-h3);font-weight:700;margin:0 0 1.4rem;color
 .ct .fonte{margin-top:2rem}
 @media (max-width:900px){.ct-grid{grid-template-columns:1fr}}
 main:has(.ct) > .ph{padding-bottom:2rem !important}
-.ct-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .ct-note a{color:#9db4ff}
 
 /* Quem acionar: fundo preto, borda cinza escura e degradê azul no hover */
@@ -1356,3 +1355,6 @@ body.inner .gd-after-band h3{font-size:1.6rem;line-height:1.25;margin:0 0 .6rem;
 
 /* acessibilidade: campo de e-mail do rodapé também mostra o contorno de foco no teclado */
 .ft-form input:focus,.ft-form input:focus-visible{outline:3px solid #1e4bff;outline-offset:2px}
+
+/* aviso centralizado no fim da simulação */
+.fonte-centro{text-align:center}
