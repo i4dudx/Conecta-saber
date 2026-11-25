@@ -360,7 +360,11 @@ function iniciarBlog() {
   abas.forEach((a) => a.addEventListener("click", () => selecionar(a)));
   if (abas.length) selecionar(abas[0]);
 
-  const passo = () => (trilho.querySelector(".post:not([hidden])")?.offsetWidth || 250) + 18;
+  // passo = largura de um card + espaço entre eles (250px se não achar nenhum card visível)
+  const passo = () => {
+    const card = trilho.querySelector(".post:not([hidden])");
+    return (card ? card.offsetWidth : 250) + 18;
+  };
   document.getElementById("blog-prev").addEventListener("click", () => trilho.scrollBy({ left: -passo() }));
   // scrollBy = rola o carrossel um card para o lado
   document.getElementById("blog-next").addEventListener("click", () => trilho.scrollBy({ left: passo() }));
