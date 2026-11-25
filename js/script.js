@@ -70,12 +70,22 @@ function iniciarFormulario() {
       return;
     }
     if (form.website && form.website.value) return; /* campo isca: robôs preenchem */
+    // aberto direto do computador (file://), o serviço de envio recusa: usa o app de e-mail
+    if (location.protocol === "file:") {
+      mostrar("O envio automático só funciona com o site publicado. Abrindo o seu aplicativo de e-mail com a mensagem pronta…", true);
+      abrirEmail(d);
+      return;
+    }
     botao.disabled = true;
     mostrar("Enviando…", false);
+    // AbortController = cancela o envio se o serviço demorar mais de 20 segundos
+    const controle = new AbortController();
+    const limite = setTimeout(() => controle.abort(), 20000);
     // fetch = faz uma requisição pela internet: manda os dados para o serviço FormSubmit, que repassa para o e-mail
     fetch("https://formsubmit.co/ajax/" + CONTATO_EMAIL, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
+      signal: controle.signal,
       // JSON.stringify = transforma os dados em texto no formato JSON para enviar
       body: JSON.stringify({
         Nome: d.nome,
@@ -83,21 +93,30 @@ function iniciarFormulario() {
         Mensagem: d.mensagem,
         _subject: "Conecta Saber: " + d.assunto,
         _template: "table",
+        _captcha: "false",
       }),
     })
       // .then = "quando a resposta chegar, faça isto"
       .then((r) => r.json())
       .then((r) => {
-        if (String(r.success) !== "true") throw new Error("falha");
-        form.reset();
-        mostrar("Mensagem enviada! Obrigado pelo contato.", false);
+        if (String(r.success) === "true") {
+          form.reset();
+          mostrar("Mensagem enviada! Obrigado pelo contato.", false);
+          return;
+        }
+        // primeiro uso: o FormSubmit pede que o dono do e-mail ative o formulário
+        if (/activ/i.test(r.message || "")) {
+          mostrar("O formulário ainda está sendo ativado. Tente novamente em alguns minutos ou escreva direto para " + CONTATO_EMAIL + ".", true);
+          return;
+        }
+        throw new Error("falha");
       })
-      // .catch = se der erro, abre o app de e-mail da pessoa com a mensagem pronta
+      // .catch = se der erro ou demorar demais, abre o app de e-mail com a mensagem pronta
       .catch(() => {
         mostrar("Não foi possível enviar agora. Abrindo o seu aplicativo de e-mail com a mensagem pronta…", true);
         abrirEmail(d);
       })
-      .finally(() => { botao.disabled = false; });
+      .finally(() => { clearTimeout(limite); botao.disabled = false; });
   });
 }
 
