@@ -168,24 +168,31 @@ a:not(.btn):not([class]){transition:color .2s}
 @keyframes scIn{from{opacity:0;filter:blur(8px)}to{opacity:1;filter:blur(0)}}
 @media (prefers-reduced-motion:reduce){html.mo .sc-cards::before,html.mo .sc-cards .sc-card{animation:none!important;opacity:1!important}}
 
-/* ---------- "Por onde começar" no celular e tablet: luz que percorre a borda de cada card ---------- */
-@property --ang{syntax:"<angle>";inherits:false;initial-value:0deg}
+/* ---------- "Por onde começar" no celular e tablet: moldura com luzes (LEDs), como no computador ---------- */
 @media (max-width:1100px){
-  /* position:relative para a borda de luz; inset:auto desfaz o posicionamento usado no computador */
-  .sc-card{position:relative;inset:auto;isolation:isolate;transition:scale .2s,background .2s}
-  /* ::before = borda de luz: conic-gradient gira com --ang; a máscara deixa aparecer só a borda */
-  .sc-card::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1.5px;pointer-events:none;
-    background:conic-gradient(from var(--ang),transparent 0 72%,#6f93ff 86%,#fff 91%,transparent 97%),linear-gradient(rgba(30,75,255,.45),rgba(30,75,255,.45));
-    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+  .sc-cards{position:relative;inset:auto}
+  /* moldura azul em volta dos cards empilhados; a máscara vertical deixa acesos só alguns trechos (LEDs) */
+  .sc-cards::before{display:block;content:"";position:absolute;inset:-10px;border:2px solid #1e4bff;border-radius:26px;pointer-events:none;
+    filter:drop-shadow(0 0 6px rgba(30,75,255,.6));
+    -webkit-mask-image:linear-gradient(180deg,#000 0,transparent 7.9%,transparent 22.5%,#000 26%,transparent 30.9%,transparent 38%,#000 40.5%,transparent 42.5%,transparent 75.4%,#000 100%);
+    mask-image:linear-gradient(180deg,#000 0,transparent 7.9%,transparent 22.5%,#000 26%,transparent 30.9%,transparent 38%,#000 40.5%,transparent 42.5%,transparent 75.4%,#000 100%);
+    -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+  /* position:relative + inset:auto desfazem o posicionamento usado no computador */
+  .sc-card{position:relative;inset:auto;transition:scale .2s,background .2s}
   /* toque no card: ele "afunda" um pouco */
   .sc-card:active{scale:.98;background:#171717}
-  html.mo .sc-cards:not(.led) .sc-card{opacity:0}
+  html.mo .sc-cards:not(.led)::before,html.mo .sc-cards:not(.led) .sc-card{opacity:0}
+  /* scLedV: os LEDs descem pela borda e assentam no lugar */
+  html.mo .sc-cards.led::before{animation:scLedV 2.6s cubic-bezier(.3,.7,.2,1) both}
   html.mo .sc-cards.led .sc-card{animation:scIn .8s cubic-bezier(.2,.7,.2,1) both}
-  html.mo .sc-cards.led .sc-card::before{animation:scRun 1.8s cubic-bezier(.4,.1,.2,1) both}
-  html.mo .sc-cards.led .sc-card-1,html.mo .sc-cards.led .sc-card-1::before{animation-delay:.1s}
-  html.mo .sc-cards.led .sc-card-2,html.mo .sc-cards.led .sc-card-2::before{animation-delay:.45s}
-  html.mo .sc-cards.led .sc-card-3,html.mo .sc-cards.led .sc-card-3::before{animation-delay:.8s}
+  html.mo .sc-cards.led .sc-card-1{animation-delay:.25s}
+  html.mo .sc-cards.led .sc-card-2{animation-delay:.6s}
+  html.mo .sc-cards.led .sc-card-3{animation-delay:.95s}
 }
-/* scRun: a luz dá uma volta completa pela borda */
-@keyframes scRun{from{--ang:0deg}to{--ang:360deg}}
-@media (prefers-reduced-motion:reduce){.sc-card::before{animation:none!important}}
+@keyframes scLedV{
+  0%{opacity:0;-webkit-mask-position:0 -70vh;mask-position:0 -70vh}
+  12%{opacity:1}
+  70%{-webkit-mask-position:0 12vh;mask-position:0 12vh}
+  100%{opacity:1;-webkit-mask-position:0 0;mask-position:0 0}
+}
+@media (prefers-reduced-motion:reduce){html.mo .sc-cards::before,html.mo .sc-cards .sc-card{animation:none!important;opacity:1!important}}
