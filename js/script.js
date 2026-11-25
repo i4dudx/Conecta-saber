@@ -1,12 +1,9 @@
 /* ==========================================================
-   Conecta Saber — script.js (comportamentos do site)
-   O JavaScript deixa a página interativa: menu do celular, formulário,
-   simulação, filtros do glossário, carrossel do blog, etc.
+   INTERAÇÕES DO SITE
    Cada parte é uma função "iniciarAlgo()", chamada quando a página carrega.
    ========================================================== */
 
-/* E-mail que recebe as mensagens do formulário de contato. */
-// const = cria uma constante (valor que não muda). Aqui: o e-mail que recebe o formulário
+// const = constante (valor que não muda): e-mail que recebe o formulário de contato
 const CONTATO_EMAIL = "conectasaber.oficial@gmail.com";
 
 // DOMContentLoaded = espera o HTML carregar inteiro e só então liga cada parte do site
@@ -25,17 +22,20 @@ document.addEventListener("DOMContentLoaded", () => {
   iniciarEvidencias();
 });
 
-/* ---------- Menu responsivo ---------- */
-// function = um bloco de código com nome, que pode ser executado quando quisermos
+/* ---------- Menu do celular ---------- */
+// function = bloco de código com nome, executado quando for chamado
 function iniciarMenu() {
   // querySelector = procura no HTML o primeiro elemento com esse seletor (igual ao CSS)
   const btn = document.querySelector(".menu-toggle");
   const menu = document.getElementById("menu");
-  if (!btn || !menu) return;  // se a página não tiver menu, para aqui (return) para não dar erro
+  // se a página não tiver menu, para aqui (return) para não dar erro
+  if (!btn || !menu) return;
   // addEventListener("click") = "quando clicar no botão, faça isto"
   btn.addEventListener("click", () => {
-    const aberto = menu.classList.toggle("open");  // classList.toggle = liga/desliga a classe "open" (o CSS mostra ou esconde o menu)
-    btn.setAttribute("aria-expanded", aberto);  // aria-expanded = avisa leitores de tela se o menu está aberto
+    // classList.toggle = liga/desliga a classe "open" (o CSS mostra ou esconde o menu)
+    const aberto = menu.classList.toggle("open");
+    // aria-expanded = avisa leitores de tela se o menu está aberto
+    btn.setAttribute("aria-expanded", aberto);
   });
 }
 
@@ -57,7 +57,8 @@ function iniciarFormulario() {
 
   // "submit" = quando a pessoa envia o formulário
   form.addEventListener("submit", (e) => {
-    e.preventDefault();  // preventDefault = impede o navegador de recarregar a página; o envio é feito pelo JavaScript
+    // preventDefault = impede o navegador de recarregar a página; o envio é feito pelo JavaScript
+    e.preventDefault();
     const d = {
       nome: form.nome.value.trim(),
       assunto: form.assunto.value,
@@ -75,7 +76,8 @@ function iniciarFormulario() {
     fetch("https://formsubmit.co/ajax/" + CONTATO_EMAIL, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({  // JSON.stringify = transforma os dados em texto no formato JSON para enviar
+      // JSON.stringify = transforma os dados em texto no formato JSON para enviar
+      body: JSON.stringify({
         Nome: d.nome,
         Assunto: d.assunto,
         Mensagem: d.mensagem,
@@ -83,13 +85,15 @@ function iniciarFormulario() {
         _template: "table",
       }),
     })
-      .then((r) => r.json())  // .then = "quando a resposta chegar, faça isto"
+      // .then = "quando a resposta chegar, faça isto"
+      .then((r) => r.json())
       .then((r) => {
         if (String(r.success) !== "true") throw new Error("falha");
         form.reset();
         mostrar("Mensagem enviada! Obrigado pelo contato.", false);
       })
-      .catch(() => {  // .catch = se der erro, abre o app de e-mail da pessoa com a mensagem pronta
+      // .catch = se der erro, abre o app de e-mail da pessoa com a mensagem pronta
+      .catch(() => {
         mostrar("Não foi possível enviar agora. Abrindo o seu aplicativo de e-mail com a mensagem pronta…", true);
         abrirEmail(d);
       })
@@ -97,8 +101,8 @@ function iniciarFormulario() {
   });
 }
 
-/* ---------- Simulação: Verdadeiro ou golpe? ---------- */
-// array (lista) com as 8 situações da simulação: texto, se é golpe ou não, explicação e sinais
+/* ---------- Simulação: dados ---------- */
+// array (lista) com as 8 situações: texto, se é golpe ou não, explicação e sinais
 const SITUACOES = [
   {
     origem: "SMS · número desconhecido",
@@ -158,7 +162,8 @@ const SITUACOES = [
   },
 ];
 
-// Simulação: mostra uma situação por vez, recebe a resposta e calcula a pontuação
+/* ---------- Simulação: funcionamento ---------- */
+// mostra uma situação por vez, recebe a resposta e calcula a pontuação
 function iniciarSimulacao() {
   const raiz = document.getElementById("quiz");
   if (!raiz) return;
@@ -179,18 +184,21 @@ function iniciarSimulacao() {
   const scoreTxt = document.getElementById("qz-score-txt");
   const lista = document.getElementById("qz-list");
 
-  let indice = 0;  // let = variável que pode mudar. indice = qual situação está na tela (começa na 0 = primeira)
-  let respostas = new Array(total).fill(null); // null = não respondida; "golpe" | "legitima" = resposta enviada
+  // let = variável que pode mudar. indice = qual situação está na tela (começa na 0 = primeira)
+  let indice = 0;
+  // null = não respondida; "golpe" | "legitima" = resposta enviada
+  let respostas = new Array(total).fill(null);
 
   // arrow function (=>): função curta. Confere se a resposta dada bate com o gabarito
   const acertou = (i) => respostas[i] !== null && (respostas[i] === "golpe") === SITUACOES[i].golpe;
   const respondidas = () => respostas.filter((r) => r !== null).length;
   const acertos = () => respostas.filter((r, i) => r !== null && acertou(i)).length;
 
-  /* navegação lateral */
+  // navegação lateral
   // .map = percorre a lista e cria um botão no menu lateral para cada situação
   const itens = SITUACOES.map((_, i) => {
-    const li = document.createElement("li");  // createElement = cria um elemento HTML novo pelo JavaScript
+    // createElement = cria um elemento HTML novo pelo JavaScript
+    const li = document.createElement("li");
     const b = document.createElement("button");
     b.type = "button";
     b.className = "qz-item";
@@ -208,7 +216,8 @@ function iniciarSimulacao() {
     scoreTxt.textContent = n === 0 ? "Nenhuma resposta enviada"
       : "Você acertou " + c + (c === 1 ? " resposta" : " respostas") + " de " + n + (n === 1 ? " respondida" : " respondidas");
     const prog = Math.round((n / total) * 100);
-    barra.style.width = prog + "%";  // muda a largura da barra de progresso direto no estilo do elemento
+    // muda a largura da barra de progresso direto no estilo do elemento
+    barra.style.width = prog + "%";
     trilho.setAttribute("aria-valuenow", prog);
     pctTxt.textContent = prog + "%";
     itens.forEach((b, i) => {
@@ -225,7 +234,8 @@ function iniciarSimulacao() {
     const s = SITUACOES[indice];
     num.textContent = "Situação " + (indice + 1) + "/" + total + ":";
     origem.textContent = s.origem;
-    texto.textContent = s.texto;  // textContent = troca o texto do elemento na tela
+    // textContent = troca o texto do elemento na tela
+    texto.textContent = s.texto;
     const r = respostas[indice];
     // forEach = repete o mesmo código para cada botão de resposta
     opcoes.forEach((o) => {
@@ -249,7 +259,8 @@ function iniciarSimulacao() {
     anterior.disabled = indice === 0;
     const ultima = indice === total - 1;
     proxima.textContent = ultima ? "Ver resultado" : "Próxima";
-    proxima.disabled = ultima && respondidas() < total;  // disabled = desativa o botão até responder tudo
+    // disabled = desativa o botão até responder tudo
+    proxima.disabled = ultima && respondidas() < total;
     atualizarPainel();
   }
 
@@ -290,21 +301,22 @@ function iniciarSimulacao() {
 }
 
 /* ---------- Guia de emergência: filtro por tipo ---------- */
-// Guia de emergência: cada botão mostra só o painel do seu tipo de golpe
+// cada botão mostra só o painel do seu tipo de golpe
 function iniciarGuiaEmergencia() {
   const botoes = document.querySelectorAll(".type-btn");
   const paineis = document.querySelectorAll(".panel");
   if (!botoes.length) return;
   function selecionar(id) {
     botoes.forEach((b) => b.setAttribute("aria-pressed", b.dataset.alvo === id));
-    paineis.forEach((p) => (p.hidden = p.id !== id));  // hidden = esconde os painéis que não são o escolhido
+    // hidden = esconde os painéis que não são o escolhido
+    paineis.forEach((p) => (p.hidden = p.id !== id));
   }
   botoes.forEach((b) => b.addEventListener("click", () => selecionar(b.dataset.alvo)));
   selecionar(botoes[0].dataset.alvo);
 }
 
 /* ---------- Glossário: busca e filtro por letra ---------- */
-// Glossário: cria os botões de A a Z e filtra os termos pela letra ou pela busca
+// cria os botões de A a Z e filtra os termos pela letra ou pela busca
 function iniciarGlossario() {
   const lista = document.getElementById("lista-termos");
   if (!lista) return;
@@ -312,7 +324,8 @@ function iniciarGlossario() {
   const busca = document.getElementById("busca-termo");
   const vazio = document.getElementById("sem-resultado");
   const letras = document.getElementById("letras");
-  let letraAtual = "A"; // ao abrir a página, a letra A já vem selecionada
+  // ao abrir a página, a letra A já vem selecionada
+  let letraAtual = "A";
 
   const disponiveis = new Set(termos.map((t) => t.dataset.letra));
   "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach((l) => {
@@ -341,12 +354,13 @@ function iniciarGlossario() {
     letras.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", b.textContent === letraAtual));
     vazio.hidden = visiveis > 0;
   }
-  busca.addEventListener("input", filtrar);  // "input" = a cada letra digitada na busca, filtra de novo
+  // "input" = a cada letra digitada na busca, filtra de novo
+  busca.addEventListener("input", filtrar);
   filtrar();
 }
 
 /* ---------- Blog: abas por categoria e setas do carrossel ---------- */
-// Blog: abas de categoria e setas que rolam o carrossel de notícias
+// abas de categoria e setas que rolam o carrossel de notícias
 function iniciarBlog() {
   const trilho = document.getElementById("blog-track");
   if (!trilho) return;
@@ -359,7 +373,8 @@ function iniciarBlog() {
     abas.forEach((a) => a.setAttribute("aria-pressed", a === aba));
     titulo.textContent = aba.dataset.title;
     desc.textContent = aba.dataset.desc;
-    posts.forEach((p) => (p.hidden = p.dataset.cat !== aba.dataset.cat));  // dataset.cat lê o atributo data-cat do HTML: só aparecem as notícias da categoria escolhida
+    // dataset.cat lê o atributo data-cat do HTML: só aparecem as notícias da categoria escolhida
+    posts.forEach((p) => (p.hidden = p.dataset.cat !== aba.dataset.cat));
     trilho.scrollTo({ left: 0 });
   }
   abas.forEach((a) => a.addEventListener("click", () => selecionar(a)));
@@ -367,25 +382,30 @@ function iniciarBlog() {
 
   const passo = () => (trilho.querySelector(".post:not([hidden])")?.offsetWidth || 250) + 18;
   document.getElementById("blog-prev").addEventListener("click", () => trilho.scrollBy({ left: -passo() }));
-  document.getElementById("blog-next").addEventListener("click", () => trilho.scrollBy({ left: passo() }));  // scrollBy = rola o carrossel um card para o lado
+  // scrollBy = rola o carrossel um card para o lado
+  document.getElementById("blog-next").addEventListener("click", () => trilho.scrollBy({ left: passo() }));
 }
 
-/* ---------- Página inicial: escala as seções 3–5 na mesma proporção da seção 2 ---------- */
-// Página inicial: calcula a escala (--z) para as seções acompanharem o tamanho do design do Figma
+/* ---------- Página inicial: escala das seções ---------- */
+// calcula a escala (--z) para as seções acompanharem o tamanho do layout
 function iniciarEscalaHome() {
   if (!document.body.classList.contains("home")) return;
   const raiz = document.documentElement;
   function ajustar() {
-    const largura = Math.min(window.innerWidth, 2125); // mesmo limite (1,08x) usado no CSS da seção 2
-    const z = (1821 * (largura / 1967)) / 1120;       // 1821px = largura útil do Figma; 1120px = largura original do container
-    raiz.style.setProperty("--z", z.toFixed(4));  // setProperty = o JavaScript escreve uma variável CSS, que o CSS usa em zoom:var(--z)
+    // mesmo limite (1,08x) usado no CSS da seção 2
+    const largura = Math.min(window.innerWidth, 2125);
+    // 1821px = largura útil do layout; 1120px = largura original do container
+    const z = (1821 * (largura / 1967)) / 1120;
+    // setProperty = o JavaScript escreve uma variável CSS, que o CSS usa em zoom:var(--z)
+    raiz.style.setProperty("--z", z.toFixed(4));
   }
   ajustar();
-  window.addEventListener("resize", ajustar);  // "resize" = recalcula quando a janela muda de tamanho
+  // "resize" = recalcula quando a janela muda de tamanho
+  window.addEventListener("resize", ajustar);
 }
 
 /* ---------- Proteja-se: seletor dos hábitos (card → painel) ---------- */
-// Páginas internas: clicar em um card mostra o painel de detalhes correspondente
+// clicar em um card mostra o painel de detalhes correspondente
 function iniciarSeletores() {
   document.querySelectorAll("[data-seletor]").forEach((raiz) => {
     const gatilhos = Array.from(raiz.querySelectorAll("[data-alvo]"));
@@ -400,7 +420,8 @@ function iniciarSeletores() {
       paineis.forEach((p) => (p.hidden = p.dataset.painel !== id));
       if (rolar) {
         const alvo = paineis.find((p) => p.dataset.painel === id);
-        if (alvo && window.innerWidth < 900) alvo.scrollIntoView({ behavior: "smooth", block: "start" });  // no celular, rola suavemente até o painel aberto
+        // no celular, rola suavemente até o painel aberto
+        if (alvo && window.innerWidth < 900) alvo.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }
     gatilhos.forEach((g) => g.addEventListener("click", (e) => { e.preventDefault(); selecionar(g.dataset.alvo, true); }));
@@ -408,8 +429,8 @@ function iniciarSeletores() {
   });
 }
 
-/* ---------- Glossário: atalhos do topo levam ao termo ---------- */
-// Glossário: atalhos do topo levam direto ao termo e o destacam por 2,6 segundos
+/* ---------- Glossário: atalhos do topo ---------- */
+// levam direto ao termo e o destacam por 2,6 segundos
 function iniciarAtalhosGlossario() {
   const lista = document.getElementById("lista-termos");
   if (!lista) return;
@@ -424,15 +445,16 @@ function iniciarAtalhosGlossario() {
     alvo.scrollIntoView({ behavior: "smooth", block: "center" });
     document.querySelectorAll(".term.destaque").forEach((t) => t.classList.remove("destaque"));
     alvo.classList.add("destaque");
-    setTimeout(() => alvo.classList.remove("destaque"), 2600);  // setTimeout = executa algo depois de um tempo (em milissegundos)
+    // setTimeout = executa algo depois de um tempo (em milissegundos)
+    setTimeout(() => alvo.classList.remove("destaque"), 2600);
   }
   document.querySelectorAll("[data-termo]").forEach((a) =>
     a.addEventListener("click", (e) => { e.preventDefault(); ir(a.dataset.termo); history.replaceState(null, "", "#" + a.dataset.termo); }));
   if (location.hash.startsWith("#termo-")) setTimeout(() => ir(location.hash.slice(1)), 200);
 }
 
-/* Rodapé: formulário de e-mail. Não há serviço de envio configurado,
-   por isso nenhum dado é coletado nem enviado; o formulário só valida o campo. */
+/* ---------- Rodapé: formulário de e-mail ---------- */
+// só valida o campo: nenhum dado é coletado nem enviado
 document.addEventListener("DOMContentLoaded", function () {
   var f = document.getElementById("ft-form");
   if (!f) return;
@@ -450,9 +472,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
-/* Cards de demonstração do topo das páginas "Conheça os golpes" e "Simulação" */
-// Cards de exemplo: clicar abre a explicação do card; o mini-teste diz se acertou
+/* ---------- Cards de exemplo ("Conheça os golpes" e "Simulação") ---------- */
+// clicar abre a explicação do card; o mini-teste diz se acertou
 function iniciarCardsDemo() {
   var lista = document.querySelectorAll(".pv-chat .pv-card");
   lista.forEach(function (c) {
@@ -488,9 +509,8 @@ function iniciarCardsDemo() {
   }
 }
 
-
-/* Passos numerados (guia de emergência e Proteja-se): clique marca o passo como feito */
-// Passos numerados: clicar marca o passo como feito e atualiza o contador
+/* ---------- Passos numerados (Guia de emergência e Proteja-se) ---------- */
+// clicar marca o passo como feito e atualiza o contador
 function iniciarPassos() {
   document.querySelectorAll(".pn-steps").forEach(function (ol) {
     var itens = ol.querySelectorAll("li");
@@ -498,7 +518,8 @@ function iniciarPassos() {
     var prog = document.createElement("p");
     prog.className = "pn-prog";
     prog.setAttribute("role", "status");
-    prog.setAttribute("aria-live", "polite");  // aria-live = leitores de tela anunciam quando o texto do contador muda
+    // aria-live = leitores de tela anunciam quando o texto do contador muda
+    prog.setAttribute("aria-live", "polite");
     var head = ol.parentElement.querySelector(".pn-head");
     function atualizar() {
       var n = ol.querySelectorAll("li.done").length;
@@ -528,9 +549,8 @@ function iniciarPassos() {
   });
 }
 
-
-/* "Guardando evidências": cada card pode ser marcado como já guardado */
-// Evidências: cada card funciona como uma caixinha de marcar (checkbox)
+/* ---------- "Guardando evidências" ---------- */
+// cada card funciona como uma caixinha de marcar (checkbox)
 function iniciarEvidencias() {
   const grid = document.querySelector(".ev-grid");
   if (!grid) return;
@@ -549,7 +569,8 @@ function iniciarEvidencias() {
   }
   cards.forEach((c) => {
     c.tabIndex = 0;
-    c.setAttribute("role", "checkbox");  // role="checkbox" = diz aos leitores de tela que o card funciona como caixinha de marcar
+    // role="checkbox" = diz aos leitores de tela que o card funciona como caixinha de marcar
+    c.setAttribute("role", "checkbox");
     c.setAttribute("aria-checked", "false");
     const m = document.createElement("span");
     m.className = "ev-check";

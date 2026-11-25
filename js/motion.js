@@ -1,16 +1,17 @@
 /* ==========================================================
-   Conecta Saber — motion.js (liga as animações)
-   Decide QUANDO cada elemento anima: ao entrar na tela, ao rolar, etc.
-   O visual das animações fica no motion.css.
-   Se este arquivo falhar, ou se a pessoa preferir menos movimento, o site continua 100% visível.
+   ANIMAÇÕES: decide quando cada elemento anima (o visual fica no motion.css).
+   Se a pessoa preferir menos movimento, nada é animado.
    ========================================================== */
+
 // função que se executa sozinha: o código fica isolado e não interfere no resto do site
 (function () {
   // matchMedia: lê se a pessoa pediu "reduzir movimento" no sistema
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce || !('IntersectionObserver' in window)) return;  // se pediu, ou se o navegador for antigo, não liga nenhuma animação
+  // se pediu, ou se o navegador for antigo, não liga nenhuma animação
+  if (reduce || !('IntersectionObserver' in window)) return;
   var root = document.documentElement;
-  root.classList.add('mo');  // adiciona a classe "mo" no <html>: é ela que libera as animações no CSS
+  // adiciona a classe "mo" no <html>: é ela que libera as animações no CSS
+  root.classList.add('mo');
 
   // lista de elementos que aparecem sozinhos ao rolar a página
   var SINGLES = [
@@ -39,8 +40,10 @@
       if (seen.has(el) || el.closest(SKIP) && !el.matches('.pa')) return;
       if (el.parentElement && el.parentElement.closest('[data-rv]')) return;
       seen.add(el);
-      el.setAttribute('data-rv', '');  // marca o elemento para o CSS escondê-lo até ele entrar na tela
-      el.style.setProperty('--rd', Math.min(i, 5) * (small ? 55 : 80) + 'ms');  // atraso de cada card (0ms, 80ms, 160ms...)
+      // marca o elemento para o CSS escondê-lo até ele entrar na tela
+      el.setAttribute('data-rv', '');
+      // atraso de cada card (0ms, 80ms, 160ms...)
+      el.style.setProperty('--rd', Math.min(i, 5) * (small ? 55 : 80) + 'ms');
       el.style.setProperty('--ry', dist + 'px');
       if (card) el.style.setProperty('--rs', '.965');
       items.push(el);
@@ -60,9 +63,11 @@
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
         var el = e.target; io.unobserve(el);
-        el.setAttribute('data-rv', 'in');  // entrou na tela: o CSS anima o elemento até a posição final
+        // entrou na tela: o CSS anima o elemento até a posição final
+        el.setAttribute('data-rv', 'in');
         var wait = 1400 + parseInt(el.style.getPropertyValue('--rd') || 0, 10);
-        setTimeout(function () {  // devolve o elemento ao estado original (hover/transições próprios voltam a valer)
+        // devolve o elemento ao estado original (hover/transições próprios voltam a valer)
+        setTimeout(function () {
           el.removeAttribute('data-rv');
           el.style.removeProperty('--rd'); el.style.removeProperty('--ry'); el.style.removeProperty('--rs');
         }, wait);
@@ -70,28 +75,29 @@
     }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
     items.forEach(function (el) { io.observe(el); });
 
-    /* Luzes de fundo: cria pelo JavaScript uma camada com 3 círculos azuis, animados pelo CSS */
+    // luzes de fundo: cria uma camada com 3 círculos azuis, animados pelo CSS
     var amb = document.createElement('div');
     amb.className = 'amb'; amb.setAttribute('aria-hidden', 'true');
     amb.innerHTML = '<i class="o1"></i><i class="o2"></i><i class="o3"></i>';
     document.body.insertBefore(amb, document.body.firstChild);
 
 
-    /* "Proteja suas contas": sequência de entrada a partir do ponto central */
+    // "Proteja suas contas": sequência de entrada a partir do ponto central
     var tl = document.querySelector('.pa-tl');
     if (tl) {
       tl.classList.add('pa-seq');
       var pio = new IntersectionObserver(function (en) {
         if (!en[0].isIntersecting) return;
         pio.disconnect();
-        tl.classList.add('go');  // .go dispara a sequência dos cards "Proteja suas contas" no CSS
+        // .go dispara a sequência dos cards "Proteja suas contas" no CSS
+        tl.classList.add('go');
         setTimeout(function () { tl.classList.add('done'); }, 4400);
       }, { threshold: 0.3 });
       pio.observe(tl);
     }
 
 
-    /* Layered parallax — exclusivo do escudo da página Proteja-se */
+    // parallax em camadas do escudo da página Proteja-se
     var shield = document.querySelector('.pv-shield img[src$="escudo-3d.png"]');
     if (shield && !small) {
       var box = shield.parentElement;
@@ -124,7 +130,8 @@
     var c = document.querySelector('.sc-cards');
     if (!c || !('IntersectionObserver' in window)) { if (c) c.classList.add('led'); return; }
     var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { c.classList.add('led'); io.disconnect(); } });  // entrou na tela: adiciona .led (LEDs da borda) e para de vigiar
+      // entrou na tela: adiciona .led (LEDs da borda) e para de vigiar
+      es.forEach(function (e) { if (e.isIntersecting) { c.classList.add('led'); io.disconnect(); } });
     }, { threshold: 0.4 });
     io.observe(c);
   }

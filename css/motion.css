@@ -1,40 +1,50 @@
+/* ==========================================================
+   ANIMAÇÕES E INTERAÇÕES
+   ========================================================== */
+
 /* scroll-padding-top = ao pular para uma seção, deixa 88px livres para o cabeçalho não cobrir o título */
 html{scroll-padding-top:88px}
 
-/* 1. Scroll reveal (só ativo quando motion.js adicionou html.mo) */
+/* ---------- 1. Aparecer ao rolar (só com html.mo, adicionada pelo motion.js) ---------- */
 /* estado inicial: invisível (opacity:0) e 28px abaixo (translate). var(--rd) = atraso para cards aparecerem um depois do outro */
 .mo [data-rv]{opacity:0;translate:0 var(--ry,28px);scale:var(--rs,1);
   transition:opacity .9s cubic-bezier(.22,.7,.2,1) var(--rd,0ms),translate .9s cubic-bezier(.22,.7,.2,1) var(--rd,0ms),scale .9s cubic-bezier(.22,.7,.2,1) var(--rd,0ms) !important;
   will-change:opacity,translate}
+
 /* quando o JavaScript marca data-rv="in", o elemento volta ao lugar e fica visível (a transition anima isso) */
 .mo [data-rv="in"]{opacity:1;translate:0 0;scale:1}
 
-/* 2. Luzes de fundo: círculos azuis que se movem devagar atrás de tudo */
+/* ---------- 2. Luzes de fundo ---------- */
 /* position:fixed = fica parado na tela; z-index:-1 = atrás de tudo; pointer-events:none = não atrapalha cliques */
 .amb{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+
 /* cada luz é um círculo (border-radius:50%) com degradê radial azul que some nas bordas */
 .amb i{position:absolute;border-radius:50%;will-change:transform,opacity;background:radial-gradient(closest-side,rgba(30,75,255,.15),rgba(30,75,255,0));opacity:.5}
+
 /* infinite alternate = a animação repete para sempre, indo e voltando */
 .amb .o1{width:62vw;height:62vw;left:-18vw;top:-14vw;animation:ambA 34s ease-in-out infinite alternate}
 .amb .o2{width:54vw;height:54vw;right:-20vw;top:34vh;animation:ambB 42s ease-in-out infinite alternate}
 .amb .o3{width:48vw;height:48vw;left:18vw;bottom:-26vw;animation:ambC 38s ease-in-out infinite alternate}
+
 /* @keyframes: a luz anda (translate3d), cresce (scale) e muda de intensidade (opacity) */
 @keyframes ambA{0%{transform:translate3d(0,0,0) scale(1);opacity:.35}100%{transform:translate3d(9vw,7vh,0) scale(1.18);opacity:.55}}
 @keyframes ambB{0%{transform:translate3d(0,0,0) scale(1.1);opacity:.5}100%{transform:translate3d(-8vw,-9vh,0) scale(.92);opacity:.3}}
 @keyframes ambC{0%{transform:translate3d(0,0,0) scale(.95);opacity:.3}100%{transform:translate3d(-7vw,-6vh,0) scale(1.15);opacity:.5}}
 
-/* flutuação discreta de elementos decorativos */
+/* ---------- Flutuação de elementos decorativos ---------- */
 /* flt = sobe 9px e volta, em 7 segundos, sem parar (efeito de flutuar) */
 .pv-chip,.mock-float,.mock-toast{animation:flt 7s ease-in-out infinite}
 .pv-chip.c2{animation-duration:8.5s;animation-delay:-2s}.pv-chip.c3{animation-duration:9.5s;animation-delay:-4s}
 .mock-toast{animation-duration:8s;animation-delay:-3s}
 @keyframes flt{0%,100%{translate:0 0}50%{translate:0 -9px}}
 
-/* 3. Parallax em camadas do escudo (página Proteja-se) */
+/* ---------- 3. Parallax do escudo (página Proteja-se) ---------- */
 .pv-shield{position:relative}
+
 /* escudo principal flutua devagar (animação shf) */
 .pv-shield .pv-main{position:relative;z-index:2;will-change:transform;animation:shf 9s ease-in-out infinite}
 .pv-shield img.pv-main{filter:drop-shadow(0 20px 40px rgba(30,75,255,.14)) !important}
+
 /* aura = cópia desfocada (filter:blur) do escudo atrás dele, que pulsa */
 .pv-shield .pv-aura{position:absolute;z-index:1;width:min(380px,80%);height:auto;left:50%;top:50%;margin:-1px 0 0;
   translate:-50% -50%;scale:1.08;opacity:.2;filter:blur(46px) saturate(1.1) !important;will-change:transform;animation:aura 7s ease-in-out infinite}
@@ -44,16 +54,19 @@ html{scroll-padding-top:88px}
 @keyframes shf{0%,100%{translate:0 0}50%{translate:0 -10px}}
 @keyframes aura{0%,100%{opacity:.14}50%{opacity:.26}}
 
-/* 4. Microinterações */
+/* ---------- 4. Microinterações ---------- */
 /* transition nos botões: o hover e o clique mudam de forma suave, não de uma vez */
 .btn,.hf-btn,.sc-btn,.mf-btn,.pa-btn,.qz-btn,.blog-tab,.faq-btn,.type-btn,.np-go{transition:translate .25s cubic-bezier(.22,.7,.2,1),scale .2s,box-shadow .3s,background-color .25s,border-color .25s,color .25s}
+
 /* :hover = mouse em cima -> o botão sobe 2px */
 .btn:hover,.hf-btn:hover,.sc-btn:hover,.mf-btn:hover,.pa-btn:hover,.qz-btn:hover,.np-go:hover{translate:0 -2px}
+
 /* :active = no momento do clique -> o botão encolhe um pouco (scale:.97), como se fosse apertado */
 .btn:active,.hf-btn:active,.sc-btn:active,.mf-btn:active,.pa-btn:active,.qz-btn:active,.np-go:active,.blog-tab:active,.type-btn:active{translate:0 0;scale:.97}
 .gl-card,.canal,.pt-link,.np-item,.term,.faq-item,.post,.ev-card{transition:transform .35s cubic-bezier(.22,.7,.2,1),border-color .3s,box-shadow .35s,background .3s}
 .gl-card:hover,.canal:hover,.post:hover{box-shadow:0 18px 44px rgba(0,0,0,.55),0 0 36px rgba(30,75,255,.22)}
 .gl-card .gl-img,.post-photo,.post img{transition:transform .8s cubic-bezier(.22,.7,.2,1)}
+
 /* zoom leve (scale 1.05) na foto do card quando o mouse passa */
 .gl-card:hover .gl-img,.post:hover img{transform:scale(1.05)}
 .canal .icon svg,.gl-card .icon svg,.pt-link svg,.post-go{transition:transform .4s cubic-bezier(.22,.7,.2,1)}
@@ -62,11 +75,13 @@ html{scroll-padding-top:88px}
 .faq-btn .chev,.faq-item .chev{transition:transform .35s cubic-bezier(.22,.7,.2,1)}
 a:not(.btn):not([class]){transition:color .2s}
 
+/* ---------- Celular e acessibilidade ---------- */
 /* @media (max-width:760px) = no celular: menos luzes e sem flutuação, para economizar bateria */
 @media (max-width:760px){
   .amb .o3{display:none}
   .mock-float,.mock-toast{animation:none}
 }
+
 /* ACESSIBILIDADE: se a pessoa ativou "reduzir movimento" no sistema, as animações são desligadas e tudo aparece direto */
 @media (prefers-reduced-motion:reduce){
   .amb{display:none}
@@ -74,7 +89,7 @@ a:not(.btn):not([class]){transition:color .2s}
   [data-rv]{opacity:1 !important;translate:none !important;scale:1 !important;transition:none !important}
 }
 
-/* ===== "Proteja suas contas": os cards nascem do ponto central, um por um ===== */
+/* ---------- "Proteja suas contas": os cards nascem do ponto central, um por um ---------- */
 /* ::after = faixa de brilho que atravessa o card no hover */
 .pa-card::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.16) 50%,transparent 70%);translate:-120% 0;transition:translate .9s cubic-bezier(.22,.7,.2,1)}
 .pa-card:hover::after{translate:120% 0}
@@ -115,8 +130,8 @@ a:not(.btn):not([class]){transition:color .2s}
 @media (prefers-reduced-motion:reduce){.pa-card::after{display:none}.pa-card:hover{scale:1;box-shadow:none}}
 .canal:hover{box-shadow:none}
 
-/* botões sem brilho azul (hover, foco ou seleção) */
-/* box-shadow:none = sem sombra/brilho azul nos botões em nenhum estado */
+/* ---------- Botões sem brilho azul ---------- */
+/* box-shadow:none = sem sombra nos botões em nenhum estado (hover, foco ou seleção) */
 .btn,.btn:hover,.btn:focus,.btn:focus-visible,.btn:active,
 .hf-btn,.hf-btn:hover,.hf-btn:active,.sc-btn,.sc-btn:hover,.sc-btn:active,
 .mf-btn:hover,.mf-btn:active,.pa-btn,.pa-btn:hover,.pa-btn:active,
@@ -127,7 +142,7 @@ a:not(.btn):not([class]){transition:color .2s}
 .letters button,.letters button:hover,.letters button:focus,.letters button[aria-pressed="true"],
 .faq-btn,.faq-btn:hover,.faq-btn:focus{box-shadow:none !important}
 
-/* Cards "Por onde começar": moldura fina com luzes (LEDs) que deslizam pela borda e assentam */
+/* ---------- Cards "Por onde começar": luzes (LEDs) que correm pela borda ---------- */
 @media (min-width:1101px){
   .sc-cards::before{border-width:calc(3*var(--u));filter:drop-shadow(0 0 calc(5*var(--u)) rgba(30,75,255,.55));
     -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
@@ -140,6 +155,7 @@ a:not(.btn):not([class]){transition:color .2s}
   html.mo .sc-cards.led .sc-card-3{animation-delay:1.35s}
   html.mo .sc-cards:not(.led) .sc-card{opacity:0}
 }
+
 /* scLed: a "máscara" da borda desliza da esquerda (-60vw) e assenta no lugar (0) -> os LEDs correm pela borda */
 @keyframes scLed{
   0%{opacity:0;-webkit-mask-position:-60vw 0;mask-position:-60vw 0}
@@ -147,6 +163,7 @@ a:not(.btn):not([class]){transition:color .2s}
   70%{-webkit-mask-position:14vw 0;mask-position:14vw 0}
   100%{opacity:1;-webkit-mask-position:0 0;mask-position:0 0}
 }
+
 /* scIn: o card sai do desfoque (blur 8px) para nítido enquanto aparece */
 @keyframes scIn{from{opacity:0;filter:blur(8px)}to{opacity:1;filter:blur(0)}}
 @media (prefers-reduced-motion:reduce){html.mo .sc-cards::before,html.mo .sc-cards .sc-card{animation:none!important;opacity:1!important}}

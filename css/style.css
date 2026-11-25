@@ -1,51 +1,75 @@
-/* :root = a raiz da página. Aqui criamos VARIÁVEIS (começam com --)
-   para reaproveitar a mesma cor ou medida no site inteiro com var(--nome). */
+/* ==========================================================
+   BASE
+   ========================================================== */
+
+/* :root = raiz da página. Variáveis (--nome) guardam cores e medidas
+   reaproveitadas no site inteiro com var(--nome).
+   --font: fonte Inter; as demais são reserva caso ela não carregue */
 :root{
   --head:#f4f1ff; --blue:#1e4bff; --teal:#1e4bff; --bg:#000000; --card:#0b0d14; --line:#232733;
   --text:#e6e2f3; --muted:#a1b8c6; --bad:#f87171; --link:#1e4bff;
-  --font:"Inter","Poppins",system-ui,-apple-system,"Segoe UI",Arial,sans-serif; /* fonte Inter; as outras são reserva */
+  --font:"Inter","Poppins",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
 }
+
 /* * = todos os elementos. box-sizing:border-box faz a largura já incluir borda e espaçamento interno */
 *{box-sizing:border-box}
+
 /* scroll-behavior:smooth = rolagem suave ao clicar em links internos (ex.: #perguntas) */
 html{scroll-behavior:smooth}
+
+/* body: margin:0 tira a margem padrão do navegador; font-family = fonte Inter;
+   color = cor dos textos; background = fundo preto; line-height = espaço entre linhas;
+   font-size = tamanho base da letra */
 body{
-  margin:0;                  /* tira a margem padrão do navegador */
-  font-family:var(--font);   /* fonte do site (Inter) */
-  color:var(--text);         /* cor padrão dos textos */
-  background:var(--bg);      /* fundo preto (#000000) */
-  line-height:1.65;          /* altura da linha: deixa o texto mais respirado */
-  font-size:17px             /* tamanho base da letra */
+  margin:0;
+  font-family:var(--font);
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.65;
+  font-size:17px
 }
+
 /* max-width:100% = a imagem nunca passa da largura da tela; height:auto mantém a proporção */
 img{max-width:100%;height:auto}
-a{color:var(--link)} /* cor dos links (azul royal) */
+
+/* cor dos links (azul royal) */
+a{color:var(--link)}
+
 /* títulos: cor clara, linhas mais juntas e espaço embaixo (margin) */
 h1,h2,h3{color:var(--head);line-height:1.25;margin:0 0 .6em}
+
 /* clamp(mínimo, ideal, máximo): o título cresce com a tela (vw) mas sem passar dos limites */
 h1{font-size:clamp(2rem,4.5vw,3rem)} h2{font-size:clamp(1.5rem,3vw,2rem)} h3{font-size:1.2rem}
+
 /* container = caixa central do conteúdo; margin-inline:auto centraliza na horizontal */
 .container{margin-inline:auto}
+
 /* link "Pular para o conteúdo" (acessibilidade): fica escondido fora da tela e aparece ao usar o Tab */
 .skip{position:absolute;left:-999px;top:0;background:var(--blue);color:#ffffff;padding:.6rem 1rem;z-index:100}
 .skip:focus{left:8px;top:8px}
+
 /* :focus-visible = contorno azul em quem navega pelo teclado (acessibilidade) */
 :focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:4px}
 
 /* ---------- Cabeçalho e menu ---------- */
 /* z-index = o cabeçalho fica por cima do resto; border-bottom = linha embaixo */
 .site-header{z-index:50;border-bottom:1px solid var(--line)}
+
 /* display:flex = coloca logo, menu e botão lado a lado; align-items:center = alinha no meio na vertical;
    justify-content:space-between = joga um para cada ponta; gap = espaço entre eles */
 .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+
 /* list-style:none = tira as bolinhas da lista do menu */
 .menu{display:flex;align-items:center;list-style:none;margin:0;padding:0}
+
 /* text-decoration:none = tira o sublinhado padrão dos links */
 .menu a.link{position:relative;display:block;text-decoration:none}
+
 /* ::after = cria um "elemento extra" sem HTML: aqui, a linha embaixo do link no hover.
    transform:scaleX(0) = começa com largura zero; transition = anima a mudança em .25s */
 .menu a.link::after{content:"";position:absolute;bottom:2px;height:3px;border-radius:3px;
   background:linear-gradient(90deg,var(--blue),var(--teal));transform:scaleX(0);transform-origin:left;transition:transform .25s}
+
 /* botão "Menu" do celular: escondido (display:none) no computador; cursor:pointer = mãozinha */
 .menu-toggle{display:none;background:none;border:2px solid var(--blue);color:var(--head);border-radius:10px;padding:.4rem .7rem;font:inherit;font-weight:700;cursor:pointer}
 
@@ -53,8 +77,10 @@ h1{font-size:clamp(2rem,4.5vw,3rem)} h2{font-size:clamp(1.5rem,3vw,2rem)} h3{fon
 /* cursor:pointer = mãozinha ao passar o mouse; text-decoration:none = sem sublinhado */
 .btn{border:0;cursor:pointer;font:inherit;text-decoration:none;
   color:#ffffff;background:linear-gradient(135deg,#1e4bff,#1e4bff)}
+
 /* translateY(-2px) = o botão "sobe" 2 pixels quando o mouse passa */
 .btn:hover{transform:translateY(-2px)}
+
 /* white-space:nowrap = o texto do botão não quebra linha */
 .btn-help{white-space:nowrap}
 
@@ -126,6 +152,7 @@ select option{background:#0b0d14;color:#e6e2f3}
 .faq{background:radial-gradient(ellipse at 0% 0%,rgba(30,75,255,.35),transparent 45%),radial-gradient(ellipse at 100% 100%,rgba(30,75,255,.3),transparent 45%),#040a0f}
 .faq-title{margin-bottom:.4rem}
 .faq-list{margin-inline:auto;display:grid}
+
 /* <details> do FAQ: cada pergunta abre e fecha sozinha, sem JavaScript */
 .faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem}
 .faq-item summary::-webkit-details-marker{display:none}
@@ -162,6 +189,7 @@ select option{background:#0b0d14;color:#e6e2f3}
 
 /* ---------- Chamada para a simulação ---------- */
 .sim-cta{background:radial-gradient(ellipse at 0% 40%,rgba(30,75,255,.3),transparent 55%),#040a0f}
+
 /* display:grid = divide a seção em colunas; 1.05fr .95fr = duas colunas quase do mesmo tamanho */
 .sim-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center}
 .mock{position:relative;padding:0 0 3rem 0}
@@ -188,6 +216,7 @@ select option{background:#0b0d14;color:#e6e2f3}
 .sim-points{list-style:none;padding:0;margin:0 0 1.8rem;display:grid;gap:.4rem}
 .sim-points li{padding-left:1.7rem;position:relative;color:#e6e2f3;font-weight:600}
 .sim-points li::before{content:"✓";position:absolute;left:0;color:#1e4bff;font-weight:800}
+
 /* abaixo de 900px: uma coluna só (cards em cima, texto embaixo) */
 @media (max-width:900px){.sim-grid{grid-template-columns:1fr}.mock{max-width:520px}}
 
@@ -273,6 +302,7 @@ body{--u:min(0.050839vw,1.08px)}
 .sc-note{margin:0;font-size:calc(18*var(--u));font-weight:700;letter-spacing:calc(-.3*var(--u));color:#bebebe}
 
 .sc-cards{position:absolute;left:calc(77*var(--u));top:calc(387*var(--u));width:calc(1821*var(--u));height:calc(343*var(--u))}
+
 /* moldura azul dos cards "Por onde começar": mask-image esconde partes da borda, deixando só os trechos de luz (LEDs) */
 .sc-cards::before{content:"";position:absolute;inset:0;border:calc(8*var(--u)) solid #1e4bff;border-radius:calc(24*var(--u));pointer-events:none;
   -webkit-mask-image:linear-gradient(90deg,#000000 0,transparent 7.9%,transparent 22.5%,#000000 26%,transparent 30.9%,transparent 38%,#000000 40.5%,transparent 42.5%,transparent 75.4%,#000000 100%);
@@ -329,20 +359,24 @@ body.home{background:
   radial-gradient(ellipse 55% 8% at 0% 67%,rgba(30,75,255,.15),transparent),
   radial-gradient(ellipse 55% 8% at 100% 91.5%,rgba(30,75,255,.14),transparent),
   #000000}
+
 /* hero: o fundo azul esmaece na base em vez de terminar em corte */
 .hero-figma{background:none;margin-bottom:calc(-110*var(--u))}
 .hero-figma::before{content:"";position:absolute;inset:0;background:url("../imagens/figma/fundo-abstrato.png") center top/cover no-repeat;
   -webkit-mask-image:linear-gradient(180deg,#000000 0,#000000 72%,transparent 100%);mask-image:linear-gradient(180deg,#000000 0,#000000 72%,transparent 100%)}
 .hf-inner{z-index:1}
+
 /* seção 2: o brilho entra suavemente por cima, encontrando o do hero */
 .sc{background:none}
 .sc::before{content:"";position:absolute;inset:0;background:url("../imagens/figma/iluminacao-secao2.png") center top/100% 100% no-repeat}
 .sc-inner{z-index:1}
+
 /* demais seções e rodapé: transparentes, sem bordas nem faixas de cor próprias */
 .home .sim-cta,.home .blog,.home .faq{background:none;border:0}
 .home .site-footer{padding-top:4rem}
 .home .copy{border-top-color:rgba(255,255,255,.08)}
 @media (max-width:1100px){.hero-figma{margin-bottom:0}.hero-figma::before{background-position:60% top}}
+
 /* seção 2: o fundo (imagem opaca) esmaece também embaixo, deixando passar o brilho da seção seguinte */
 .sc::before{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000000 16%,#000000 82%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000000 16%,#000000 82%,transparent 100%)}
 
@@ -382,9 +416,9 @@ body.home{background:
 .faq-a p{color:#a5b1b8;font-size:.92rem;line-height:1.6}
 @media (max-width:900px){.faq-grid{grid-template-columns:1fr;gap:2rem}}
 
-/* =====================================================================
+/* ==========================================================
    PÁGINAS INTERNAS — visual igual ao da home (preto + azul royal)
-   ===================================================================== */
+   ========================================================== */
 body.inner{background:#000;--u:1px}
 body.inner section{padding:4.5rem 0}
 body.inner .site-header{position:absolute}
@@ -397,7 +431,7 @@ body.inner .btn-help{width:auto;height:auto}
 body.inner h1,body.inner h2,body.inner h3{color:#fafafa}
 body.inner em{font-style:normal;color:#1e4bff}
 
-/* Hero */
+/* ---------- Hero ---------- */
 .ph{position:relative;overflow:hidden;isolation:isolate}
 .ph::before{content:"";position:absolute;inset:-5% -10% 0;z-index:-1;background:url("../imagens/figma/fundo-abstrato.png") center top/cover no-repeat;opacity:.55;-webkit-mask-image:linear-gradient(#000 40%,transparent 100%);mask-image:linear-gradient(#000 40%,transparent 100%)}
 .ph-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center}
@@ -410,7 +444,7 @@ body.inner em{font-style:normal;color:#1e4bff}
 .ph-search .search{width:100%;max-width:none;padding:.95rem 1.2rem .95rem 3rem;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:#fff}
 .ph-search .search:focus{border-color:#1e4bff;outline:0;box-shadow:0 0 0 3px rgba(30,75,255,.3)}
 
-/* Visuais do hero */
+/* ---------- Visuais do hero ---------- */
 .ph-visual{display:grid;place-items:center;min-height:320px}
 .pv{position:relative;width:100%;max-width:480px}
 .pv-card{display:flex;align-items:center;gap:.8rem;padding:.9rem 1rem;border-radius:16px;background:rgba(14,18,32,.85);border:1px solid rgba(30,75,255,.45);box-shadow:0 14px 40px rgba(0,0,0,.5),0 0 30px rgba(30,75,255,.2);backdrop-filter:blur(10px)}
@@ -433,17 +467,17 @@ body.inner em{font-style:normal;color:#1e4bff}
 .pv-t{padding:.6rem 1.1rem;border-radius:999px;border:1px solid rgba(255,255,255,.25);color:#fff;font-weight:600;background:rgba(255,255,255,.05)}
 .pv-t.t1,.pv-t.t4{background:#1e4bff;border-color:#1e4bff;font-size:1.15rem}.pv-t.t3,.pv-t.t6{font-size:1.1rem}
 
-/* Cabeçalho de seção */
+/* ---------- Cabeçalho de seção ---------- */
 .sh{max-width:640px}
 .sh h2{margin:0 0 .7rem}
 .sh p:not(.sh-eyebrow){color:#a9b2c8;margin:0}
 .fonte{color:#7f879a;font-size:.88rem;margin-top:2rem}.fonte a{color:#9db4ff}
 
-/* Listas com ícone */
+/* ---------- Listas com ícone ---------- */
 .pills{list-style:none;padding:0;margin:1.2rem 0 0;display:flex;flex-wrap:wrap;gap:.5rem}
 .pills li{padding:.35rem .8rem;border:1px solid rgba(255,255,255,.2);border-radius:999px;font-size:.8rem;color:#e6e9f4}
 
-/* Golpes */
+/* ---------- Golpes ---------- */
 .gl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem}
 .gl-card{display:block;text-decoration:none;padding:1.3rem;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
 .gl-card:hover{transform:translateY(-3px);border-color:rgba(30,75,255,.6)}
@@ -454,7 +488,7 @@ body.inner em{font-style:normal;color:#1e4bff}
 .gl-card.on p{color:#e1e8ff}
 .pt-panel[hidden],.panel[hidden]{display:none}
 
-/* Proteja-se */
+/* ---------- Proteja-se ---------- */
 .pt-grid{display:grid;grid-template-columns:300px 1fr;gap:1.5rem;align-items:start}
 .pt-nav{display:grid;gap:.6rem}
 .pt-link{display:flex;align-items:center;gap:.8rem;padding:.85rem 1rem;border-radius:14px;text-decoration:none;color:#e6e9f4;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);font-weight:600}
@@ -463,11 +497,11 @@ body.inner em{font-style:normal;color:#1e4bff}
 .pt-link.on{background:#1e4bff;border-color:#1e4bff;color:#fff}.pt-link.on svg{stroke:#fff}
 .pt-panel{padding:2rem;border-radius:24px;background:rgba(255,255,255,.04);border:1px solid rgba(30,75,255,.4);box-shadow:0 0 60px rgba(30,75,255,.12);min-height:300px}
 
-/* Simulação */
+/* ---------- Simulação ---------- */
 .quiz{max-width:760px;background:rgba(255,255,255,.05);border:1px solid rgba(30,75,255,.4);border-radius:28px;padding:2rem;box-shadow:0 0 70px rgba(30,75,255,.15)}
 .quiz .btn{background:#1e4bff;color:#fff;border-radius:10px}
 
-/* Emergência */
+/* ---------- Emergência ---------- */
 .type-buttons{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.6rem}
 .type-btn{background:transparent;border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:999px;padding:.65rem 1.2rem;font-weight:500}
 .type-btn:hover{border-color:#1e4bff}.type-btn[aria-pressed="true"]{background:#1e4bff;border-color:#1e4bff}
@@ -476,7 +510,7 @@ body.inner em{font-style:normal;color:#1e4bff}
 .canais{display:grid;grid-template-columns:repeat(3,1fr)}
 .canal h3{font-size:1.05rem;margin:0 0 .4rem}.canal p{margin:0}
 
-/* Glossário */
+/* ---------- Glossário ---------- */
 .letters{gap:.4rem;margin:0 0 1.8rem}
 .letters button{background:transparent;border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:10px}
 .letters button[aria-pressed="true"]{background:#1e4bff;border-color:#1e4bff}
@@ -518,7 +552,7 @@ a.pv-t.t1:hover,a.pv-t.t4:hover{background:#3b64ff}
 .term .letter-badge{font-family:inherit;backdrop-filter:none;right:1.1rem;top:1.1rem}
 .term h3{margin-right:3.2rem}
 
-/* ===== Página individual de golpe ===== */
+/* ---------- Página individual de golpe ---------- */
 .gl-more{display:inline-flex;align-items:center;gap:.4rem;margin-top:.9rem;font-size:.82rem;font-weight:700;color:#8fa9ff}
 .gl-more svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
 .gl-card:hover .gl-more svg{transform:translateX(4px)}
@@ -598,7 +632,7 @@ a.pv-t.t1:hover,a.pv-t.t4:hover{background:#3b64ff}
 .post-photo[src*="noticia-7"]{object-position:64% 50%}
 .post-photo[src*="noticia-5"]{object-position:50% 50%}
 
-/* ===== Rodapé ===== */
+/* ---------- Rodapé ---------- */
 .site-footer,.home .site-footer,body.inner .site-footer{background:#000;color:#fff;margin-top:0;padding:4.5rem 0 2rem}
 .ft-top{display:flex;justify-content:space-between;align-items:center;gap:2.5rem 3rem;flex-wrap:wrap}
 .ft-tag{margin:0;font-weight:700;line-height:1.1;letter-spacing:-.025em;color:#fff;text-wrap:balance}
@@ -627,7 +661,7 @@ a.pv-t.t1:hover,a.pv-t.t4:hover{background:#3b64ff}
 .ft-news-t{font-size:1.15rem}
 .ft-cols h3{font-size:1.4rem}
 
-/* ===== Glossário: cards dos termos ===== */
+/* ---------- Glossário: cards dos termos ---------- */
 main:has(#lista-termos)>section:last-of-type{background:#03040A}
 .terms{grid-template-columns:repeat(4,1fr);gap:1.1rem}
 .term{position:relative;display:flex;flex-direction:column;background:#05060c;border:1px solid rgba(255,255,255,.07);overflow:hidden;isolation:isolate;cursor:default}
@@ -659,7 +693,7 @@ main:has(#lista-termos)>section:last-of-type{background:#03040A}
 @media (max-width:540px){.term{min-height:0}}
 .ph-grid.ph-solo{grid-template-columns:1fr}.ph-grid.ph-solo .ph-text{max-width:46rem}
 
-/* ===== Guia de emergência: "o que fazer agora" em duas colunas ===== */
+/* ---------- Guia de emergência: "o que fazer agora" em duas colunas ---------- */
 .panels .panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:0;padding:3rem 0;border:0;border-radius:0}
 .panels .panel[hidden]{display:none}
 .pn-head{padding:.4rem 3rem .4rem 2.2rem;border-right:1px solid rgba(255,255,255,.18);align-self:stretch;display:flex;flex-direction:column;justify-content:center}
@@ -677,6 +711,7 @@ main:has(#lista-termos)>section:last-of-type{background:#03040A}
   .pn-steps li{grid-template-columns:3.4rem 1fr;gap:.9rem}
   .pn-steps li::before{font-size:2.1rem}
 }
+
 /* degradê do painel vai de ponta a ponta da tela */
 #situacao{overflow-x:clip}
 .panels .panel{position:relative;background:none;isolation:isolate}
@@ -684,7 +719,7 @@ main:has(#lista-termos)>section:last-of-type{background:#03040A}
   background:radial-gradient(55% 100% at 100% 100%,rgba(30,75,255,.32),transparent 70%),radial-gradient(40% 80% at 0% 0%,rgba(30,75,255,.10),transparent 70%),#02030a}
 .panels .panel::before{-webkit-mask-image:linear-gradient(to bottom,transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 14%,#000 86%,transparent)}
 
-/* ===== Guia de emergência: "Mantenha registros de tudo" ===== */
+/* ---------- Guia de emergência: "Mantenha registros de tudo" ---------- */
 .ev{padding:5.5rem 0}
 .ev-wrap{margin:0 auto;text-align:center}
 .ev-eyebrow{margin:0 0 .9rem;font-size:1.25rem;font-weight:400;color:#fff}
@@ -701,12 +736,12 @@ main:has(#lista-termos)>section:last-of-type{background:#03040A}
 @media (max-width:560px){.ev{padding:3.5rem 0}.ev-grid{grid-template-columns:1fr;margin-top:2rem}.ev-card{min-height:0;padding:1.8rem 1.5rem}}
 @media (min-width:561px){.ev-card h3{min-height:2.4em}}
 
-/* ===== Quem acionar: cards pretos com degradê sutil ===== */
+/* ---------- Quem acionar: cards pretos com degradê sutil ---------- */
 .canal{position:relative;overflow:hidden}
 .canal .icon{width:auto;height:auto;background:none;border:0;border-radius:0;color:#fff;display:block}
 .canal .icon svg{stroke:#fff}
 
-/* ===== Guia de emergência: "Proteja suas contas" ===== */
+/* ---------- Guia de emergência: "Proteja suas contas" ---------- */
 .pa{position:relative;color:#fff}
 .pa-in{position:relative;max-width:1920px;margin:0 auto;container-type:inline-size;aspect-ratio:2485/1398}
 .pa-left{position:absolute;left:5.55cqw;top:7.45cqw;width:33cqw;padding-top:2.25cqw;display:flex;flex-direction:column;align-items:flex-start}
@@ -734,6 +769,7 @@ main:has(#lista-termos)>section:last-of-type{background:#03040A}
 .pa-dot.d2{left:45.254%;top:34.119%}
 .pa-dot.d3{left:45.254%;top:60.050%}
 .pa-dot.d4{left:45.254%;top:81.266%}
+
 /* halo azul com marcador branco luminoso */
 .pa-dot{position:absolute;width:5.624%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(0,150,255,.6) 0,rgba(0,143,232,.28) 40%,rgba(0,143,232,0) 70%)}
 .pa-dot::before{content:"";position:absolute;inset:24%;border-radius:50%;background:#fff;box-shadow:0 0 0 .2cqw #0a63ff,0 0 .9cqw .12cqw rgba(0,140,255,.95)}
@@ -773,7 +809,7 @@ main:has(#lista-termos)>section:last-of-type{background:#03040A}
   .pa-label{line-height:1.4}
 }
 
-/* ===== Simulação: layout do quiz ===== */
+/* ---------- Simulação: layout do quiz ---------- */
 .qz{display:grid;grid-template-columns:minmax(0,1fr) 320px;margin-top:2.5rem;background:#000}
 .qz-main{min-width:0}
 .qz-title{margin:0 0 1rem}
@@ -811,6 +847,7 @@ main:has(#lista-termos)>section:last-of-type{background:#03040A}
 .qz-item{display:flex;align-items:center;gap:.9rem;width:100%;color:var(--qz-ink);font:inherit;font-size:1.02rem;text-align:left;cursor:pointer;transition:transform .15s}
 .qz-item:hover{transform:translateX(-2px)}
 .qz-dot{flex:none;position:relative;width:28px;height:28px;border-radius:50%}
+
 /* bolinha de cada situação: verde com ✓ (acertou) ou vermelha com ✕ (errou); data-estado é definido pelo JavaScript */
 .qz-item[data-estado="ok"] .qz-dot{background:#22c55e;border-color:#22c55e}
 .qz-item[data-estado="no"] .qz-dot{background:#ef4444;border-color:#ef4444}
@@ -954,7 +991,7 @@ body.inner .qz .qz-title{color:#1e4bff}
 .gd-cta-wrap{position:relative;isolation:isolate;background:none !important}
 .gd-cta-wrap::before{content:"";position:absolute;left:0;right:0;top:-6rem;bottom:-6rem;z-index:-1;pointer-events:none;background:url("../imagens/figma/iluminacao-secao2.png") center/cover no-repeat;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 38%,#000 62%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 38%,#000 62%,transparent 100%)}
 
-/* ===== Proteja-se: "7 hábitos" e "Na prática" ===== */
+/* ---------- Proteja-se: "7 hábitos" e "Na prática" ---------- */
 #habitos{overflow-x:clip}
 #habitos .pt-grid{display:block}
 #habitos .pt-nav{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.6rem}
@@ -1017,33 +1054,46 @@ body.inner .np2 .np-sit{color:#fff}
 .np2 .np-foot{background:linear-gradient(110deg,#2f58e6 0%,#1a3aa8 30%,#070d30 68%,#000 100%);border-color:rgba(99,140,255,.28)}
 .np2 .np-foot::after{background:radial-gradient(circle,rgba(47,88,230,.35),transparent 65%)}
 
-/* ==========================================================================
-   DESIGN SYSTEM — regras globais que valem para todas as páginas
-   (variáveis de medida + componentes). Mudou aqui, muda no site inteiro.
-   ========================================================================== */
+/* ==========================================================
+   DESIGN SYSTEM
+   Regras globais que valem para todas as páginas.
+   Mudou aqui, muda no site inteiro.
+   ========================================================== */
+
+/* Variáveis de medida:
+   --container   largura máxima do conteúdo
+   --wide        largura máxima de faixas mais largas
+   --gutter      margem lateral (16px no celular, até 32px no computador)
+   --section-y   espaço em cima e embaixo de cada seção
+   --hero-*      respiro do topo das páginas
+   --r-*         arredondamento: campos, cards, faixas e botões (pílula)
+   --fs-*        tamanhos de letra: título principal, seção, card e texto de abertura
+   --lh-*        altura de linha de títulos e textos
+   clamp(mín, ideal, máx) = valor fluido que acompanha a tela sem passar dos limites */
 :root{
-  /* layout */
-  --container:1280px;               /* largura máxima do conteúdo */
-  --wide:1440px;                    /* largura máxima de faixas mais largas */
-  --gutter:clamp(16px,4vw,32px);    /* margem lateral: 16px no celular, até 32px no computador */
-  --section-y:clamp(56px,6.5vw,96px); /* espaço vertical em cima e embaixo de cada seção */
-  --hero-top:clamp(118px,11vw,150px); --hero-bottom:clamp(48px,5vw,72px); /* respiro do topo das páginas */
-  /* raios (arredondamento dos cantos) */
-  --r-sm:12px;    /* campos de formulário */
-  --r-card:24px;  /* cards */
-  --r-band:32px;  /* faixas grandes */
-  --r-pill:999px; /* botões em formato de pílula */
-  /* tipografia (tamanhos de letra) */
-  --fs-h1:clamp(2.2rem,5vw,3.8rem); /* título principal: fluido entre 2.2rem e 3.8rem */
-  --fs-h2:clamp(1.8rem,3.6vw,2.7rem); /* títulos de seção */
-  --fs-h3:1.2rem;                   /* títulos de card */
-  --fs-lead:1.1rem;                 /* texto de abertura das seções */
-  --lh-title:1.1; --lh-text:1.6;    /* altura de linha: títulos mais juntos, textos mais soltos */
+  --container:1280px;
+  --wide:1440px;
+  --gutter:clamp(16px,4vw,32px);
+  --section-y:clamp(56px,6.5vw,96px);
+  --hero-top:clamp(118px,11vw,150px);
+  --hero-bottom:clamp(48px,5vw,72px);
+  --r-sm:12px;
+  --r-card:24px;
+  --r-band:32px;
+  --r-pill:999px;
+  --fs-h1:clamp(2.2rem,5vw,3.8rem);
+  --fs-h2:clamp(1.8rem,3.6vw,2.7rem);
+  --fs-h3:1.2rem;
+  --fs-lead:1.1rem;
+  --lh-title:1.1;
+  --lh-text:1.6;
 }
 
-/* 1. Container: min() escolhe o MENOR valor -> 1280px ou a tela menos as margens */
+/* ---------- 1. Container ---------- */
+/* min() escolhe o MENOR valor: 1280px ou a largura da tela menos as margens */
 .container{width:min(var(--container),100% - 2*var(--gutter))}
 .site-footer .container{max-width:none;width:min(var(--container),100% - 2*var(--gutter))}
+
 /* @media (min-width:1101px) = só vale em telas com 1101px ou mais (computador) */
 @media (min-width:1101px){
   body.home .nav,body.inner .nav{width:min(var(--container),100% - 2*var(--gutter));margin-inline:auto;padding:22px 0 0;min-height:93px}
@@ -1053,41 +1103,50 @@ body.inner .np2 .np-sit{color:#fff}
   .qz{width:min(var(--wide),100vw - 2*var(--gutter))}
 }
 
-/* 2. Espaçamento vertical: padding-block = espaço interno em cima e embaixo.
-   :not(...) = "menos estes" (seções que têm espaçamento próprio) */
+/* ---------- 2. Espaçamento vertical ---------- */
+/* padding-block = espaço interno em cima e embaixo; :not(...) = "menos estas" seções */
 body main > section:not(.ph):not(.gd-hero):not(.pa):not(.start):not(.sc):not(.gd-cta-wrap){padding-block:var(--section-y)}
 .sim-cta,.blog,.faq{padding-block:var(--section-y)}
+
 /* !important = força esta regra a vencer outras que também mexem nisso */
 .ph,.gd-hero{padding:var(--hero-top) 0 var(--hero-bottom) !important}
 .gd-cta-wrap{padding-block:var(--section-y) !important}
 .sh{margin-bottom:2.4rem}
 
-/* 3. Tipografia: font-size = tamanho; font-weight:700 = negrito; letter-spacing = espaço entre letras */
+/* ---------- 3. Tipografia ---------- */
+/* font-size = tamanho; font-weight:700 = negrito; letter-spacing = espaço entre letras */
 .ph h1,.gd-hero h1{font-size:var(--fs-h1);line-height:1.05;font-weight:700;letter-spacing:-.03em}
 .sh h2,.gd-intro h2,.gd-protect h2,.qz-title,.pn-head h3,.np .sh h2{font-size:var(--fs-h2);line-height:var(--lh-title);font-weight:700;letter-spacing:-.025em}
 .gd-tip h3,.gd-after h3,.gd-step h3,.gl-card h3{font-size:var(--fs-h3);line-height:1.3;font-weight:700}
 .sh p:not(.sh-eyebrow),.gd-lead,.ph-sub{font-size:var(--fs-lead);line-height:var(--lh-text)}
 body.inner p,body.inner li{line-height:var(--lh-text)}
 
-/* 4. Botões: inline-flex + align-items/justify-content:center = texto e ícone centralizados */
+/* ---------- 4. Botões ---------- */
+/* inline-flex + align-items/justify-content:center = texto e ícone centralizados */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:.85rem 1.6rem;border-radius:var(--r-pill);font-size:1rem;font-weight:700;line-height:1.2}
 .ph-actions .btn{padding:.85rem 1.6rem;border-radius:var(--r-pill)}
 body.inner .btn-help{padding:.7rem 1.3rem;border-radius:var(--r-pill)}
 .qz-btn{border-radius:var(--r-pill)}
 
-/* 5. Cards, faixas e campos usam os mesmos raios (variáveis --r-...) */
+/* ---------- 5. Cantos arredondados ---------- */
+/* cards, faixas e campos usam as mesmas variáveis --r-... */
 .gd-step,.gd-stat,.gd-after,.term{border-radius:var(--r-card)}
 .gd-after-band,.np2 .np-foot{border-radius:var(--r-band)}
 .qz{border-radius:var(--r-band)}
 input,select,textarea,.search{border-radius:var(--r-sm)}
 
-/* 6. @media (max-width:760px) = só vale em telas de até 760px (celular) */
+/* ---------- 6. Celular ---------- */
+/* @media (max-width:760px) = só vale em telas de até 760px */
 @media (max-width:760px){
   .sh{margin-bottom:1.8rem}
   .btn{padding:.8rem 1.4rem}
 }
 
-/* espaçamentos e tamanhos comuns */
+/* ==========================================================
+   AJUSTES POR PÁGINA
+   ========================================================== */
+
+/* ---------- Espaçamentos e tamanhos comuns ---------- */
 .gd-sec{padding-block:var(--section-y) !important}
 .hf-btn,.sc-btn{border-radius:var(--r-pill)}
 @media (max-width:1100px){.hf-title{font-size:var(--fs-h1);line-height:1.08}}
@@ -1104,6 +1163,7 @@ body.home .sim-cta h2,body.home .blog h2,body.home .faq h2,body.home .faq-title,
 .blog-head p{margin:0;color:#a9b2c8;font-size:var(--fs-lead)}
 .blog-top{align-items:flex-end;margin-bottom:3rem}
 .blog-head p{max-width:44rem}
+
 /* Quem acionar: grade e tamanho dos cards */
 .canais{gap:1.25rem}
 .canal{padding:2rem 1.9rem 2.1rem;min-height:15rem;border-radius:var(--r-card);border-color:rgba(255,255,255,.16)}
@@ -1113,12 +1173,15 @@ body.inner .canal h3{font-size:1.4rem;margin:0 0 .6rem}
 .canal p{font-size:1.02rem;line-height:1.55}
 .canal a{color:#8fabff;font-weight:600}
 @media (max-width:760px){.canal{min-height:0;padding:1.6rem 1.5rem}}
+
 /* Simulação (home): cards pretos com borda cinza escura */
 .mock-main,.mock-float{background:#000;border:1px solid #2a2a2e;box-shadow:0 18px 40px rgba(0,0,0,.6);backdrop-filter:none}
 .mf-btn{border-color:#2a2a2e}
 .mf-btn.main{border-color:transparent}
+
 /* Blog: título da categoria em branco */
 body.home .blog .blog-side h3,.blog-side h3{color:#fff}
+
 /* Centralização do hero e do menu na largura da página */
 .hf-inner{left:0}
 @media (min-width:1101px){
@@ -1129,9 +1192,11 @@ body.home .blog .blog-side h3,.blog-side h3{color:#fff}
   .menu li:first-child{margin-left:auto}
   .menu li:last-child{margin-left:auto}
 }
+
 /* fundos transparentes: as luzes de fundo passam entre as seções */
 .pa,.ev{background:transparent !important}
 .site-footer{background:transparent}
+
 /* Cards de demonstração interativos */
 .pv-chat .pv-card{cursor:pointer;transition:transform .3s cubic-bezier(.22,.7,.2,1),border-color .25s,background .25s,box-shadow .3s}
 .pv-chat .pv-card:hover,.pv-chat .pv-card:focus-visible{transform:translateY(-3px);border-color:rgba(255,255,255,.28);background:rgba(20,24,40,.92);outline:0}
@@ -1147,6 +1212,7 @@ body.home .blog .blog-side h3,.blog-side h3{color:#fff}
 .pv-ok.troca{animation:pvPop .45s cubic-bezier(.22,.7,.2,1)}
 @keyframes pvPop{0%{opacity:.4;transform:translateY(8px) scale(.97)}100%{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.pv-ok.troca{animation:none}.pv-chat .pv-card .pv-why{transition:none}}
+
 /* Passos numerados interativos */
 .pn-steps li{cursor:pointer;transition:translate .3s cubic-bezier(.22,.7,.2,1),opacity .3s;border-radius:12px;outline-offset:6px}
 .pn-steps li::before{transition:color .25s,background .25s,transform .3s}
@@ -1163,10 +1229,12 @@ body.home .blog .blog-side h3,.blog-side h3{color:#fff}
 .pn-steps li > span{transition:opacity .3s}
 .pn-head p.pn-prog{margin:1.3rem 0 0;font-size:.9rem;line-height:1.4;color:#8d97b0}
 .pn-head p.pn-prog.ok{color:#9db4ff}
+
 /* Simulação: espaço entre o topo e o quiz */
 main:has(#quiz) > .ph{padding-bottom:2.5rem !important}
 main:has(#quiz) > section:not(.ph){padding-top:0}
 main:has(#quiz) .qz{margin-top:0}
+
 /* Página de contato */
 .ct{padding-block:0 var(--section-y)}
 .ct-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(2rem,5vw,4.5rem);align-items:start}
@@ -1197,6 +1265,7 @@ body.inner .ct h2{font-size:var(--fs-h3);font-weight:700;margin:0 0 1.4rem;color
 main:has(.ct) > .ph{padding-bottom:2rem !important}
 .ct-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .ct-note a{color:#9db4ff}
+
 /* Quem acionar: fundo preto, borda cinza escura e degradê azul no hover */
 .canal{background:#000;border:1px solid #2a2a2e;box-shadow:none;isolation:isolate}
 .canal::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;opacity:0;transition:opacity .35s;background:linear-gradient(155deg,#1e4bff 0%,#0f2bb0 18%,#06126a 36%,#000 72%,#000 100%)}
@@ -1205,6 +1274,7 @@ main:has(.ct) > .ph{padding-bottom:2rem !important}
 body.inner .canal h3{color:#fff}
 .canal p{color:#98a0b6;transition:color .35s}
 .canal:hover p{color:#e3e9ff}
+
 /* Evidências: cards interativos */
 .ev-card{position:relative;overflow:hidden;isolation:isolate;cursor:pointer}
 .ev-card::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;opacity:0;transition:opacity .35s;background:linear-gradient(155deg,#1e4bff 0%,#0f2bb0 18%,#06126a 36%,#000 72%,#000 100%)}
@@ -1223,11 +1293,14 @@ body.inner .canal h3{color:#fff}
 .ev-prog{margin:1.6rem 0 0;text-align:center;font-size:.95rem;color:#8d97b0;transition:color .3s}
 .ev-prog.ok{color:#9db4ff}
 @media (prefers-reduced-motion:reduce){.ev-card:hover{transform:none}.ev-card::after{display:none}}
+
 /* Emergência: espaço entre os passos e "Proteja suas contas" */
 #situacao{padding-bottom:1.5rem}
 @media (min-width:901px){.pa{margin-top:-4rem}}
+
 /* "Proteja suas contas": tamanho do título */
 @media (min-width:901px){.pa-left h2{font-size:2.5cqw;line-height:3.2cqw}}
+
 /* "E se o golpe já aconteceu?": faixa sem brilho de fundo */
 .gd-cta-wrap::before{display:none}
 .gd-after-band{gap:2.5rem;padding:2.4rem 2.8rem;background:#000;border:1px solid #2a2a2e;box-shadow:none;transition:border-color .3s}
@@ -1239,14 +1312,18 @@ body.inner .gd-after-band h3{font-size:1.6rem;line-height:1.25;margin:0 0 .6rem;
 .gd-after-band .btn::after{content:"→";transition:translate .3s cubic-bezier(.22,.7,.2,1)}
 .gd-after-band .btn:hover::after{translate:4px 0}
 @media (max-width:760px){.gd-after-band{padding:1.8rem 1.5rem;gap:1.4rem}.gd-after-band .btn{width:100%;justify-content:center}}
+
 /* Páginas de golpe: espaço entre os rótulos e a faixa de números */
 .gd-sec:has(.pills){padding-bottom:1.25rem !important}
 .gd-sec:has(.gd-stats){padding-top:1.25rem !important}
+
 /* botão Contato do header: fundo branco */
 .nav .btn-help,body.home .btn-help,body.inner .btn-help{background:#fafafa;color:#0a0a0c}
 .nav .btn-help:hover{background:#fff;color:#000}
+
 /* ícone do SMS em azul */
 .av-sms,.pv-av:not(.wa):not(.em){background:linear-gradient(135deg,#3b64ff,#1e4bff)}
+
 /* botão Contato: tamanho e alinhamento no header */
 @media (min-width:1101px){
   .nav,body.inner .nav,body.home .nav{--bw:136px}
@@ -1276,5 +1353,6 @@ body.inner .gd-after-band h3{font-size:1.6rem;line-height:1.25;margin:0 0 .6rem;
 
 /* acessibilidade: azul um pouco mais claro no texto pequeno para ter contraste suficiente */
 .mf-btn:not(.main){color:#4d74ff}
+
 /* acessibilidade: campo de e-mail do rodapé também mostra o contorno de foco no teclado */
 .ft-form input:focus,.ft-form input:focus-visible{outline:3px solid #1e4bff;outline-offset:2px}

@@ -1,39 +1,57 @@
 <!DOCTYPE html>
-<html lang="pt-BR"> <!-- lang="pt-BR": idioma da página (ajuda leitores de tela e o Google) -->
-<head> <!-- <head>: informações sobre a página; nada aqui aparece no conteúdo -->
-<meta charset="UTF-8"> <!-- UTF-8: permite acentos e ç -->
-<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- deixa a página responsiva: no celular ela usa a largura da tela -->
-<title>Redes sociais | Conecta Saber</title> <!-- texto que aparece na aba do navegador -->
-<meta name="description" content="Invasão de contas, perfis falsos e falsas promoções e sorteios."> <!-- resumo que aparece no Google -->
-<link rel="icon" type="image/png" href="../imagens/logo/favicon.png"> <!-- ícone da aba (favicon) -->
-<!-- preconnect: já abre conexão com o Google Fonts para a fonte carregar mais rápido -->
+<html lang="pt-BR">
+<head>
+<!--
+  HEAD: informações da página (não aparecem na tela)
+  - lang="pt-BR": idioma da página, ajuda leitores de tela e o Google
+  - meta charset UTF-8: permite acentos e ç
+  - meta viewport: deixa a página responsiva no celular
+  - title: texto da aba do navegador
+  - meta description: resumo que aparece no Google
+  - link icon: ícone da aba (favicon)
+  - preconnect + Google Fonts: carrega a fonte Inter
+  - style.css e motion.css: visual e animações
+  - motion.js e script.js: animações e interações (defer = roda depois que o HTML carregar)
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redes sociais | Conecta Saber</title>
+<meta name="description" content="Invasão de contas, perfis falsos e falsas promoções e sorteios.">
+<link rel="icon" type="image/png" href="../imagens/logo/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"> <!-- carrega a fonte Inter do Google Fonts -->
-<link rel="stylesheet" href="../css/style.css"> <!-- liga o arquivo CSS principal (visual do site) -->
-<link rel="stylesheet" href="../css/motion.css"> <!-- CSS das animações -->
-<script src="../js/motion.js"></script> <!-- JavaScript das animações -->
-<script src="../js/script.js" defer></script> <!-- JavaScript principal; defer = só roda depois que o HTML carregar -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/motion.css">
+<script src="../js/motion.js"></script>
+<script src="../js/script.js" defer></script>
 </head>
-<body class="inner"> <!-- <body>: tudo o que aparece na tela. A classe muda o estilo da home ou das páginas internas -->
+
+<!-- BODY: tudo o que aparece na tela -->
+<body class="inner">
 <!-- acessibilidade: link escondido que aparece com a tecla Tab e pula direto para o conteúdo -->
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
-<!-- <header>: cabeçalho com logo, menu e botão de contato -->
+
+<!--
+  HEADER: cabeçalho com logo, menu e botão de contato
+  - <a> + <img>: logo com link; alt = texto lido por leitores de tela
+  - <button>: botão "Menu" do celular; aria-expanded diz se o menu está aberto
+  - <ul>/<li>: itens do menu; aria-current="page" marca a página atual
+-->
 <header class="site-header">
   <div class="container nav">
-    <!-- <a> = link; <img> = imagem; alt = texto lido por leitores de tela se a imagem não carregar -->
     <a class="logo" href="../index.html" aria-label="Conecta Saber — página inicial"><img src="../imagens/figma/logo-figma.png" alt="Conecta Saber" width="141" height="57"></a>
-    <!-- <button>: botão "Menu" que só aparece no celular; aria-expanded diz se o menu está aberto -->
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
-    <!-- <ul> = lista; cada <li> é um item do menu. aria-current="page" marca a página atual -->
     <ul class="menu" id="menu">
       <li><a class="link" href="../index.html">Início</a></li><li><a class="link" href="golpes.html" aria-current="page">Conheça os golpes</a></li><li><a class="link" href="proteja-se.html">Proteja-se</a></li><li><a class="link" href="simulacao.html">Simulação</a></li><li><a class="link" href="emergencia.html">Guia de emergência</a></li><li><a class="link" href="glossario.html">Glossário</a></li>
       <li><a class="btn btn-help" href="contato.html">Contato</a></li>
     </ul>
   </div>
 </header>
-<!-- <main>: o conteúdo principal da página (id="conteudo" é o destino do link "Pular para o conteúdo") -->
+
+<!-- MAIN: conteúdo principal (id="conteudo" é o destino do link "Pular para o conteúdo") -->
 <main id="conteudo">
+
 <!-- <section>: cada bloco temático da página -->
 <section class="gd-hero">
   <div class="container">
@@ -86,7 +104,8 @@
 </section>
 
 </main>
-<!-- <footer>: rodapé com sobre, links e fontes -->
+
+<!-- FOOTER: rodapé com sobre, links e fontes -->
 <footer class="site-footer">
   <div class="container">
     <div class="ft-top">
