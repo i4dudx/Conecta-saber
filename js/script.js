@@ -3,8 +3,9 @@
    Cada parte é uma função "iniciarAlgo()", chamada quando a página carrega.
    ========================================================== */
 
-// const = constante (valor que não muda): e-mail que recebe o formulário de contato
-const CONTATO_EMAIL = "conectasaber.oficial@gmail.com";
+// const = constante (valor que não muda): número do WhatsApp que recebe as mensagens do contato
+// formato internacional: 55 (Brasil) + 81 (DDD) + número, só dígitos
+const CONTATO_WHATSAPP = "558196568803";
 
 // DOMContentLoaded = espera o HTML carregar inteiro e só então liga cada parte do site
 document.addEventListener("DOMContentLoaded", () => {
@@ -39,84 +40,41 @@ function iniciarMenu() {
   });
 }
 
-/* ---------- Formulário de contato -> envia por e-mail ---------- */
+/* ---------- Formulário de contato -> WhatsApp ---------- */
+// monta a mensagem com os dados do formulário e abre o WhatsApp com ela pronta para enviar
 function iniciarFormulario() {
   const form = document.getElementById("form-contato");
   if (!form) return;
   const status = document.getElementById("form-status");
-  const botao = form.querySelector('button[type="submit"]');
 
   function mostrar(texto, erro) {
     status.className = "form-status" + (erro ? " err" : "");
     status.textContent = texto;
   }
-  function abrirEmail(d) {
-    const corpo = "Nome: " + d.nome + "\nAssunto: " + d.assunto + "\n\n" + d.mensagem;
-    window.location.href = "mailto:" + CONTATO_EMAIL + "?subject=" + encodeURIComponent("Conecta Saber: " + d.assunto) + "&body=" + encodeURIComponent(corpo);
-  }
 
   // "submit" = quando a pessoa envia o formulário
   form.addEventListener("submit", (e) => {
-    // preventDefault = impede o navegador de recarregar a página; o envio é feito pelo JavaScript
+    // preventDefault = impede o navegador de recarregar a página
     e.preventDefault();
-    const d = {
-      nome: form.nome.value.trim(),
-      assunto: form.assunto.value,
-      mensagem: form.mensagem.value.trim(),
-    };
+    const nome = form.nome.value.trim();
+    const assunto = form.assunto.value;
+    const mensagem = form.mensagem.value.trim();
     // validação: se algum campo estiver vazio, mostra aviso e não envia
-    if (!d.nome || !d.assunto || !d.mensagem) {
+    if (!nome || !assunto || !mensagem) {
       mostrar("Preencha todos os campos para continuar.", true);
       return;
     }
-    if (form.website && form.website.value) return; /* campo isca: robôs preenchem */
-    // aberto direto do computador (file://), o serviço de envio recusa: usa o app de e-mail
-    if (location.protocol === "file:") {
-      mostrar("O envio automático só funciona com o site publicado. Abrindo o seu aplicativo de e-mail com a mensagem pronta…", true);
-      abrirEmail(d);
-      return;
-    }
-    botao.disabled = true;
-    mostrar("Enviando…", false);
-    // AbortController = cancela o envio se o serviço demorar mais de 20 segundos
-    const controle = new AbortController();
-    const limite = setTimeout(() => controle.abort(), 20000);
-    // fetch = faz uma requisição pela internet: manda os dados para o serviço FormSubmit, que repassa para o e-mail
-    fetch("https://formsubmit.co/ajax/" + CONTATO_EMAIL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      signal: controle.signal,
-      // JSON.stringify = transforma os dados em texto no formato JSON para enviar
-      body: JSON.stringify({
-        Nome: d.nome,
-        Assunto: d.assunto,
-        Mensagem: d.mensagem,
-        _subject: "Conecta Saber: " + d.assunto,
-        _template: "table",
-        _captcha: "false",
-      }),
-    })
-      // .then = "quando a resposta chegar, faça isto"
-      .then((r) => r.json())
-      .then((r) => {
-        if (String(r.success) === "true") {
-          form.reset();
-          mostrar("Mensagem enviada! Obrigado pelo contato.", false);
-          return;
-        }
-        // primeiro uso: o FormSubmit pede que o dono do e-mail ative o formulário
-        if (/activ/i.test(r.message || "")) {
-          mostrar("O formulário ainda está sendo ativado. Tente novamente em alguns minutos ou escreva direto para " + CONTATO_EMAIL + ".", true);
-          return;
-        }
-        throw new Error("falha");
-      })
-      // .catch = se der erro ou demorar demais, abre o app de e-mail com a mensagem pronta
-      .catch(() => {
-        mostrar("Não foi possível enviar agora. Abrindo o seu aplicativo de e-mail com a mensagem pronta…", true);
-        abrirEmail(d);
-      })
-      .finally(() => { clearTimeout(limite); botao.disabled = false; });
+    // campo isca: só robôs preenchem
+    if (form.website && form.website.value) return;
+    const texto = "Olá! Vim pelo site Conecta Saber.\n\nNome: " + nome + "\nAssunto: " + assunto + "\n\n" + mensagem;
+    // encodeURIComponent = transforma o texto (acentos, espaços, quebras de linha) num formato que pode ir no link
+    const link = "https://wa.me/" + CONTATO_WHATSAPP + "?text=" + encodeURIComponent(texto);
+    // window.open = abre o WhatsApp numa nova aba (no celular, abre o aplicativo)
+    const aba = window.open(link, "_blank");
+    // se o navegador bloquear a nova aba, abre o WhatsApp na própria página
+    if (aba) aba.opener = null; else window.location.href = link;
+    form.reset();
+    mostrar("Abrimos o WhatsApp com a sua mensagem pronta. É só tocar em enviar.", false);
   });
 }
 
