@@ -384,7 +384,7 @@ function iniciarEscalaHome() {
   window.addEventListener("resize", ajustar);  // "resize" = recalcula quando a janela muda de tamanho
 }
 
-/* ---------- Páginas internas: seletores (cards → painel) e abas ---------- */
+/* ---------- Proteja-se: seletor dos hábitos (card → painel) ---------- */
 // Páginas internas: clicar em um card mostra o painel de detalhes correspondente
 function iniciarSeletores() {
   document.querySelectorAll("[data-seletor]").forEach((raiz) => {
@@ -405,16 +405,6 @@ function iniciarSeletores() {
     }
     gatilhos.forEach((g) => g.addEventListener("click", (e) => { e.preventDefault(); selecionar(g.dataset.alvo, true); }));
     selecionar(gatilhos[0].dataset.alvo, false);
-  });
-  document.querySelectorAll("[data-abas]").forEach((raiz) => {
-    const abas = Array.from(raiz.querySelectorAll("[data-aba]"));
-    const panes = Array.from(raiz.querySelectorAll("[data-pane]"));
-    function sel(k) {
-      abas.forEach((a) => a.setAttribute("aria-pressed", a.dataset.aba === k));
-      panes.forEach((p) => (p.hidden = p.dataset.pane !== k));
-    }
-    abas.forEach((a) => a.addEventListener("click", () => sel(a.dataset.aba)));
-    if (abas.length) sel(abas[0].dataset.aba);
   });
 }
 
