@@ -132,7 +132,7 @@
     var io = new IntersectionObserver(function (es) {
       // entrou na tela: adiciona .led (LEDs da borda) e para de vigiar
       es.forEach(function (e) { if (e.isIntersecting) { c.classList.add('led'); io.disconnect(); } });
-    }, { threshold: 0.4 });
+    }, { threshold: window.innerWidth > 1100 ? 0.4 : 0.15 });
     io.observe(c);
   }
   function iniciarEntradas() { ledCards(); }
