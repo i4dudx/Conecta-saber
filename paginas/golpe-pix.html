@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR"> <!-- lang="pt-BR": idioma da página (ajuda leitores de tela e o Google) -->
+<head> <!-- <head>: informações sobre a página; nada aqui aparece no conteúdo -->
+<meta charset="UTF-8"> <!-- UTF-8: permite acentos e ç -->
+<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- deixa a página responsiva: no celular ela usa a largura da tela -->
+<title>Pix e transferências | Conecta Saber</title> <!-- texto que aparece na aba do navegador -->
+<meta name="description" content="Fraudes que levam a vítima a transferir dinheiro por engano, por pressão ou por comprovantes falsos."> <!-- resumo que aparece no Google -->
+<link rel="icon" type="image/png" href="../imagens/logo/favicon.png"> <!-- ícone da aba (favicon) -->
+<!-- preconnect: já abre conexão com o Google Fonts para a fonte carregar mais rápido -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"> <!-- carrega a fonte Inter do Google Fonts -->
+<link rel="stylesheet" href="../css/style.css"> <!-- liga o arquivo CSS principal (visual do site) -->
+<link rel="stylesheet" href="../css/motion.css"> <!-- CSS das animações -->
+<script src="../js/motion.js"></script> <!-- JavaScript das animações -->
+<script src="../js/script.js" defer></script> <!-- JavaScript principal; defer = só roda depois que o HTML carregar -->
+</head>
+<body class="inner"> <!-- <body>: tudo o que aparece na tela. A classe muda o estilo da home ou das páginas internas -->
+<!-- acessibilidade: link escondido que aparece com a tecla Tab e pula direto para o conteúdo -->
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<!-- <header>: cabeçalho com logo, menu e botão de contato -->
+<header class="site-header">
+  <div class="container nav">
+    <!-- <a> = link; <img> = imagem; alt = texto lido por leitores de tela se a imagem não carregar -->
+    <a class="logo" href="../index.html" aria-label="Conecta Saber — página inicial"><img src="../imagens/figma/logo-figma.png" alt="Conecta Saber" width="141" height="57"></a>
+    <!-- <button>: botão "Menu" que só aparece no celular; aria-expanded diz se o menu está aberto -->
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <!-- <ul> = lista; cada <li> é um item do menu. aria-current="page" marca a página atual -->
+    <ul class="menu" id="menu">
+      <li><a class="link" href="../index.html">Início</a></li><li><a class="link" href="golpes.html" aria-current="page">Conheça os golpes</a></li><li><a class="link" href="proteja-se.html">Proteja-se</a></li><li><a class="link" href="simulacao.html">Simulação</a></li><li><a class="link" href="emergencia.html">Guia de emergência</a></li><li><a class="link" href="glossario.html">Glossário</a></li>
+      <li><a class="btn btn-help" href="contato.html">Contato</a></li>
+    </ul>
+  </div>
+</header>
+<!-- <main>: o conteúdo principal da página (id="conteudo" é o destino do link "Pular para o conteúdo") -->
+<main id="conteudo">
+<!-- <section>: cada bloco temático da página -->
+<section class="gd-hero">
+  <div class="container">
+    <!-- <h1>: título principal da página (só existe um por página) -->
+    <h1>Pix e transferências</h1>
+    <p class="gd-crumb"><a href="../index.html">Início</a><span>›</span><a href="golpes.html">Conheça os golpes</a><span>›</span><strong>Pix</strong></p>
+  </div>
+</section>
+
+<section class="gd-sec">
+  <div class="container gd-intro gd-intro-solo">
+    <div>
+      <p class="gd-eyebrow">O que são esses golpes?</p>
+      <h2>Pix e transferências: fique atento!</h2>
+      <p class="gd-lead">Golpes em que o criminoso faz a vítima enviar dinheiro por Pix ou transferência, ou a convence de que um pagamento foi feito quando não foi.</p>
+      <ul class="pills"><li>Comprovantes falsos</li><li>Golpe do Pix errado</li><li>Falso atendimento bancário</li></ul>
+    </div>
+  </div>
+</section>
+<section class="gd-sec">
+  <div class="container">
+    <div class="gd-stats">
+      <div class="gd-stat-main"><h3>Os golpes de Pix em números</h3><p>Dados de fontes públicas, citadas logo abaixo.</p></div>
+      <div class="gd-stat"><b>R$ 24,5 bi</b><span>Desviados em fraudes no Pix (jan/2022–abr/2026)</span></div><div class="gd-stat"><b>8,9%</b><span>Desse valor foi devolvido às vítimas</span></div><div class="gd-stat"><b>14,1 mi</b><span>Fraudes confirmadas no mesmo período</span></div>
+    </div>
+    <p class="fonte gd-fontes"><strong>Fontes:</strong> <a href="https://mais.opovo.com.br/reportagens-especiais/2026/07/24/a-cada-rs-100-em-golpes-no-pix-instituicoes-devolvem-apenas-rs-890.html" target="_blank" rel="noopener">Banco Central do Brasil (dados do Pix e do MED, jan/2022–abr/2026), compilados pelo O POVO+, 24/07/2026</a>.</p>
+  </div>
+</section>
+<section class="gd-sec">
+  <div class="container">
+    <div class="sh"><p class="sh-eyebrow">Como funciona</p><h2>Entenda o golpe passo a passo</h2></div>
+    <div class="gd-steps"><div class="gd-step"><b>1</b><p>Comprovante falso: o golpista envia uma imagem de pagamento que nunca aconteceu.</p></div><div class="gd-step"><b>2</b><p>Pix errado: alguém diz ter transferido por engano e pede devolução para outra conta.</p></div><div class="gd-step"><b>3</b><p>Falso atendimento: um “funcionário do banco” pede dados, códigos ou transferências “de segurança”.</p></div></div>
+  </div>
+</section>
+<section class="gd-sec">
+  <div class="container gd-protect">
+    <div>
+      <p class="gd-eyebrow">Como se proteger?</p>
+      <h2>Dicas para evitar golpes de Pix</h2>
+      <p class="gd-lead">Siga estas recomendações e proteja seu dinheiro e seus dados.</p>
+      <div class="gd-tips"><div class="gd-tip"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3L21 2M16 7l3 3"/></svg></span><div><h3>Confirme no aplicativo</h3><p>Só confirme recebimentos no aplicativo do seu banco, nunca por imagem.</p></div></div><div class="gd-tip"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-7 10 7"/></svg></span><div><h3>Devolva pelo banco</h3><p>Devolva valores recebidos por engano pelos canais do próprio banco.</p></div></div><div class="gd-tip"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><div><h3>Bancos não pedem senha</h3><p>Bancos não pedem senha nem códigos por telefone ou mensagem.</p></div></div></div>
+    </div>
+    <div class="frame frame-photo ph-portrait ph-pix"><img src="../imagens/golpes/pix.jpg" alt="Celular exibindo pagamento aprovado por aproximação em uma maquininha, representando Pix e transferências" width="1600" height="1200" loading="lazy"></div>
+  </div>
+</section>
+<section class="gd-cta-wrap">
+  <div class="container">
+    <div class="gd-after gd-after-band"><div><h3>E se o golpe já aconteceu?</h3><p>Contate imediatamente o banco pelo aplicativo ou pelo telefone oficial e informe a fraude. Guarde comprovantes e conversas e registre um boletim de ocorrência. Veja o <a href="emergencia.html">Guia de emergência</a>.</p></div><a class="btn btn-light" href="emergencia.html">Guia de emergência</a></div>
+  </div>
+</section>
+
+</main>
+<!-- <footer>: rodapé com sobre, links e fontes -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="ft-top">
+      <p class="ft-tag">Conhecimento que conecta,<br>segurança que protege.</p>
+      <div class="ft-news">
+        <p class="ft-news-t" id="ft-news-t">Acesse informações e aprenda mais!</p>
+        <!-- formulário de e-mail do rodapé; type="email" e required: o navegador já confere se é um e-mail -->
+        <form class="ft-form" id="ft-form" novalidate aria-labelledby="ft-news-t">
+          <label class="sr-only" for="ft-email">Seu e-mail</label>
+          <input type="email" id="ft-email" name="email" placeholder="Digite seu e-mail" autocomplete="email" required>
+          <button type="submit">Inscrever-se</button>
+        </form>
+        <p class="ft-msg" id="ft-msg" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="ft-cols">
+      <div>
+        <h3>Sobre o Conecta Saber</h3>
+        <p>O Conecta Saber ajuda a ampliar a segurança digital no dia a dia, facilitando a identificação de golpes e uma navegação mais segura.</p>
+      </div>
+      <div>
+        <h3>Navegue</h3>
+        <ul><li><a href="../index.html">Início</a></li><li><a href="golpes.html">Conheça os golpes</a></li><li><a href="proteja-se.html">Proteja-se</a></li><li><a href="simulacao.html">Simulação e emergência</a></li><li><a href="glossario.html">Glossário</a></li><li><a href="contato.html">Contato</a></li></ul>
+      </div>
+      <div>
+        <h3>Fontes</h3>
+        <ul>
+          <!-- target="_blank" abre em nova aba; rel="noopener" é por segurança -->
+          <li><a href="https://cartilha.cert.br/" target="_blank" rel="noopener">Cartilha de Segurança (CERT.br)</a></li>
+          <li><a href="https://www.gov.br/pt-br" target="_blank" rel="noopener">Portal gov.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copy">© 2026 Conecta Saber – projeto acadêmico de caráter educativo. As orientações têm finalidade informativa.</p>
+  </div>
+</footer>
+</body>
+</html>

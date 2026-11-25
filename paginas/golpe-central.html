@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR"> <!-- lang="pt-BR": idioma da página (ajuda leitores de tela e o Google) -->
+<head> <!-- <head>: informações sobre a página; nada aqui aparece no conteúdo -->
+<meta charset="UTF-8"> <!-- UTF-8: permite acentos e ç -->
+<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- deixa a página responsiva: no celular ela usa a largura da tela -->
+<title>Falsas centrais de atendimento | Conecta Saber</title> <!-- texto que aparece na aba do navegador -->
+<meta name="description" content="Falsos funcionários de banco que inventam um problema para obter dados e dinheiro."> <!-- resumo que aparece no Google -->
+<link rel="icon" type="image/png" href="../imagens/logo/favicon.png"> <!-- ícone da aba (favicon) -->
+<!-- preconnect: já abre conexão com o Google Fonts para a fonte carregar mais rápido -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"> <!-- carrega a fonte Inter do Google Fonts -->
+<link rel="stylesheet" href="../css/style.css"> <!-- liga o arquivo CSS principal (visual do site) -->
+<link rel="stylesheet" href="../css/motion.css"> <!-- CSS das animações -->
+<script src="../js/motion.js"></script> <!-- JavaScript das animações -->
+<script src="../js/script.js" defer></script> <!-- JavaScript principal; defer = só roda depois que o HTML carregar -->
+</head>
+<body class="inner"> <!-- <body>: tudo o que aparece na tela. A classe muda o estilo da home ou das páginas internas -->
+<!-- acessibilidade: link escondido que aparece com a tecla Tab e pula direto para o conteúdo -->
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<!-- <header>: cabeçalho com logo, menu e botão de contato -->
+<header class="site-header">
+  <div class="container nav">
+    <!-- <a> = link; <img> = imagem; alt = texto lido por leitores de tela se a imagem não carregar -->
+    <a class="logo" href="../index.html" aria-label="Conecta Saber — página inicial"><img src="../imagens/figma/logo-figma.png" alt="Conecta Saber" width="141" height="57"></a>
+    <!-- <button>: botão "Menu" que só aparece no celular; aria-expanded diz se o menu está aberto -->
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <!-- <ul> = lista; cada <li> é um item do menu. aria-current="page" marca a página atual -->
+    <ul class="menu" id="menu">
+      <li><a class="link" href="../index.html">Início</a></li><li><a class="link" href="golpes.html" aria-current="page">Conheça os golpes</a></li><li><a class="link" href="proteja-se.html">Proteja-se</a></li><li><a class="link" href="simulacao.html">Simulação</a></li><li><a class="link" href="emergencia.html">Guia de emergência</a></li><li><a class="link" href="glossario.html">Glossário</a></li>
+      <li><a class="btn btn-help" href="contato.html">Contato</a></li>
+    </ul>
+  </div>
+</header>
+<!-- <main>: o conteúdo principal da página (id="conteudo" é o destino do link "Pular para o conteúdo") -->
+<main id="conteudo">
+<!-- <section>: cada bloco temático da página -->
+<section class="gd-hero">
+  <div class="container">
+    <!-- <h1>: título principal da página (só existe um por página) -->
+    <h1>Falsas centrais de atendimento</h1>
+    <p class="gd-crumb"><a href="../index.html">Início</a><span>›</span><a href="golpes.html">Conheça os golpes</a><span>›</span><strong>Falsas centrais de atendimento</strong></p>
+  </div>
+</section>
+
+<section class="gd-sec">
+  <div class="container gd-intro gd-intro-solo">
+    <div>
+      <p class="gd-eyebrow">O que são esses golpes?</p>
+      <h2>Falsa central: fique atento!</h2>
+      <p class="gd-lead">Criminosos se passam por funcionários do banco ou de empresas conhecidas, por ligação, SMS, WhatsApp ou e-mail, e usam um problema inventado para obter dados, levar a vítima a movimentar dinheiro ou instalar aplicativos de acesso remoto.</p>
+      <ul class="pills"><li>Ligação, SMS e WhatsApp</li><li>Número falso (0800)</li><li>Falsa urgência</li></ul>
+    </div>
+  </div>
+</section>
+<section class="gd-sec">
+  <div class="container">
+    <div class="sh"><p class="sh-eyebrow">Como funciona</p><h2>Entenda o golpe passo a passo</h2></div>
+    <div class="gd-steps gd-steps-4"><div class="gd-step"><b>1</b><p>O golpista liga ou envia mensagem se passando por funcionário do banco e pode citar seus dados, como nome e data de nascimento. Com spoofing, o número oficial do banco pode aparecer na tela.</p></div><div class="gd-step"><b>2</b><p>Informa um problema inventado: compra suspeita, tentativa de invasão da conta ou movimentação fora do padrão, e exige ação imediata.</p></div><div class="gd-step"><b>3</b><p>Pede senha, token, dados do cartão ou QR Code, induz transações “teste” ou pede para instalar um aplicativo ou compartilhar a tela.</p></div><div class="gd-step"><b>4</b><p>Em outra versão, o SMS fala de compra indevida ou Pix pendente e traz um telefone 0800 falso, atendido pelo próprio golpista.</p></div></div>
+  </div>
+</section>
+<section class="gd-sec">
+  <div class="container gd-protect">
+    <div>
+      <p class="gd-eyebrow">Como se proteger?</p>
+      <h2>Dicas para evitar a falsa central</h2>
+      <p class="gd-lead">Siga estas recomendações e proteja seu dinheiro e seus dados.</p>
+      <div class="gd-tips"><div class="gd-tip"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><div><h3>Desligue e ligue você</h3><p>Se desconfiar, encerre a chamada e ligue para o número oficial do banco, por exemplo o que está no cartão ou no aplicativo.</p></div></div><div class="gd-tip"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><div><h3>Banco não pede senha nem token</h3><p>Instituições legítimas não pedem senha, token, dados do cartão ou transferências para resolver problemas na conta.</p></div></div><div class="gd-tip"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg></span><div><h3>Não ligue para 0800 de mensagem</h3><p>A Febraban orienta nunca ligar para números 0800 recebidos por SMS ou outras mensagens.</p></div></div><div class="gd-tip"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><div><h3>Não instale apps nem compartilhe a tela</h3><p>Não baixe aplicativos pedidos por terceiros e não mostre a tela do celular: isso expõe senhas e saldos.</p></div></div><div class="gd-tip"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><div><h3>Nada de transferência “teste”</h3><p>Nunca faça transferências “teste”. Ao ligar de volta, espere ao menos 10 minutos ou use outro aparelho, pois o golpista pode manter a linha aberta.</p></div></div></div>
+    </div>
+    <div class="frame frame-photo ph-portrait ph-eng"><img src="../imagens/golpes/central.jpg" alt="Homem de camisa jeans com a mão na testa olhando para o celular, em ambiente escuro" width="1254" height="1254" loading="lazy"></div>
+  </div>
+</section>
+<section class="gd-cta-wrap">
+  <div class="container">
+    <div class="gd-after gd-after-band"><div><h3>E se o golpe já aconteceu?</h3><p>Se você forneceu dados, troque senhas, avise as instituições envolvidas e acompanhe movimentações. Em caso de prejuízo, siga o <a href="emergencia.html">Guia de emergência</a>.</p></div><a class="btn btn-light" href="emergencia.html">Guia de emergência</a></div>
+  </div>
+</section>
+<section class="gd-sec"><div class="container"><p class="fonte gd-fontes"><strong>Fontes:</strong> <a href="https://agenciabrasil.ebc.com.br/economia/noticia/2024-01/como-evitar-cair-em-golpes-bancarios" target="_blank" rel="noopener">Agência Brasil, “Como evitar cair em golpes bancários” (orientações da Febraban), 20/01/2024</a> · <a href="https://investalk.bb.com.br/noticias/tecnologia/golpe-da-falsa-central-evolui-e-a-protecao-tambem" target="_blank" rel="noopener">InvesTalk (Banco do Brasil), “Golpe da falsa central evolui e a proteção também”</a> · <a href="https://www.sicredi.com.br/site/blog/seguranca/golpe-falsa-central/" target="_blank" rel="noopener">Blog Sicredi, “Golpe da falsa central”</a></p></div></section>
+
+</main>
+<!-- <footer>: rodapé com sobre, links e fontes -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="ft-top">
+      <p class="ft-tag">Conhecimento que conecta,<br>segurança que protege.</p>
+      <div class="ft-news">
+        <p class="ft-news-t" id="ft-news-t">Acesse informações e aprenda mais!</p>
+        <!-- formulário de e-mail do rodapé; type="email" e required: o navegador já confere se é um e-mail -->
+        <form class="ft-form" id="ft-form" novalidate aria-labelledby="ft-news-t">
+          <label class="sr-only" for="ft-email">Seu e-mail</label>
+          <input type="email" id="ft-email" name="email" placeholder="Digite seu e-mail" autocomplete="email" required>
+          <button type="submit">Inscrever-se</button>
+        </form>
+        <p class="ft-msg" id="ft-msg" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="ft-cols">
+      <div>
+        <h3>Sobre o Conecta Saber</h3>
+        <p>O Conecta Saber ajuda a ampliar a segurança digital no dia a dia, facilitando a identificação de golpes e uma navegação mais segura.</p>
+      </div>
+      <div>
+        <h3>Navegue</h3>
+        <ul><li><a href="../index.html">Início</a></li><li><a href="golpes.html">Conheça os golpes</a></li><li><a href="proteja-se.html">Proteja-se</a></li><li><a href="simulacao.html">Simulação e emergência</a></li><li><a href="glossario.html">Glossário</a></li><li><a href="contato.html">Contato</a></li></ul>
+      </div>
+      <div>
+        <h3>Fontes</h3>
+        <ul>
+          <!-- target="_blank" abre em nova aba; rel="noopener" é por segurança -->
+          <li><a href="https://cartilha.cert.br/" target="_blank" rel="noopener">Cartilha de Segurança (CERT.br)</a></li>
+          <li><a href="https://www.gov.br/pt-br" target="_blank" rel="noopener">Portal gov.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copy">© 2026 Conecta Saber – projeto acadêmico de caráter educativo. As orientações têm finalidade informativa.</p>
+  </div>
+</footer>
+</body>
+</html>

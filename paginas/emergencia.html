@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR"> <!-- lang="pt-BR": idioma da página (ajuda leitores de tela e o Google) -->
+<head> <!-- <head>: informações sobre a página; nada aqui aparece no conteúdo -->
+<meta charset="UTF-8"> <!-- UTF-8: permite acentos e ç -->
+<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- deixa a página responsiva: no celular ela usa a largura da tela -->
+<title>Guia de emergência | Conecta Saber</title> <!-- texto que aparece na aba do navegador -->
+<meta name="description" content="O que fazer após um golpe digital: proteger contas, preservar evidências e acionar canais oficiais."> <!-- resumo que aparece no Google -->
+<link rel="icon" type="image/png" href="../imagens/logo/favicon.png"> <!-- ícone da aba (favicon) -->
+<!-- preconnect: já abre conexão com o Google Fonts para a fonte carregar mais rápido -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"> <!-- carrega a fonte Inter do Google Fonts -->
+<link rel="stylesheet" href="../css/style.css"> <!-- liga o arquivo CSS principal (visual do site) -->
+<link rel="stylesheet" href="../css/motion.css"> <!-- CSS das animações -->
+<script src="../js/motion.js"></script> <!-- JavaScript das animações -->
+<script src="../js/script.js" defer></script> <!-- JavaScript principal; defer = só roda depois que o HTML carregar -->
+</head>
+<body class="inner"> <!-- <body>: tudo o que aparece na tela. A classe muda o estilo da home ou das páginas internas -->
+<!-- acessibilidade: link escondido que aparece com a tecla Tab e pula direto para o conteúdo -->
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<!-- <header>: cabeçalho com logo, menu e botão de contato -->
+<header class="site-header">
+  <div class="container nav">
+    <!-- <a> = link; <img> = imagem; alt = texto lido por leitores de tela se a imagem não carregar -->
+    <a class="logo" href="../index.html" aria-label="Conecta Saber — página inicial"><img src="../imagens/figma/logo-figma.png" alt="Conecta Saber" width="141" height="57"></a>
+    <!-- <button>: botão "Menu" que só aparece no celular; aria-expanded diz se o menu está aberto -->
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <!-- <ul> = lista; cada <li> é um item do menu. aria-current="page" marca a página atual -->
+    <ul class="menu" id="menu">
+      <li><a class="link" href="../index.html">Início</a></li><li><a class="link" href="golpes.html">Conheça os golpes</a></li><li><a class="link" href="proteja-se.html">Proteja-se</a></li><li><a class="link" href="simulacao.html">Simulação</a></li><li><a class="link" href="emergencia.html" aria-current="page">Guia de emergência</a></li><li><a class="link" href="glossario.html">Glossário</a></li>
+      <li><a class="btn btn-help" href="contato.html">Contato</a></li>
+    </ul>
+  </div>
+</header>
+<!-- <main>: o conteúdo principal da página (id="conteudo" é o destino do link "Pular para o conteúdo") -->
+<main id="conteudo">
+<!-- <section>: cada bloco temático da página -->
+<section class="ph">
+  <div class="container ph-grid ph-solo">
+    <div class="ph-text">
+      <p class="ph-eyebrow">Guia de emergência</p>
+      <!-- <h1>: título principal da página (só existe um por página) -->
+      <h1>Sofri um golpe. <em>E agora?</em></h1>
+      <p class="ph-sub">Respire. Siga os passos na ordem: agir rápido faz diferença.</p>
+      
+      <div class="ph-actions"><a class="btn btn-light" href="#situacao">Escolher minha situação</a><a class="btn btn-dark" href="tel:190">Ligar para o 190</a></div>
+    </div>
+    
+  </div>
+</section>
+
+<section id="situacao">
+  <div class="container">
+    <div class="sh"><h2>O que aconteceu?</h2><p>Escolha a situação e veja o passo a passo.</p></div>
+    <div class="type-buttons" role="group" aria-label="Tipo de ocorrência"><button class="type-btn" type="button" data-alvo="p-pix" aria-pressed="false">Perdi dinheiro (Pix/transferência)</button><button class="type-btn" type="button" data-alvo="p-cartao" aria-pressed="false">Compra ou cartão fraudulento</button><button class="type-btn" type="button" data-alvo="p-whats" aria-pressed="false">WhatsApp clonado</button><button class="type-btn" type="button" data-alvo="p-conta" aria-pressed="false">Conta ou senha invadida</button><button class="type-btn" type="button" data-alvo="p-dados" aria-pressed="false">Dados pessoais vazados ou entregues</button></div>
+    <div class="panels"><div class="panel" id="p-pix"><div class="pn-head"><h3>Perdi dinheiro <span>(Pix/transferência)</span></h3><p>Se você realizou um Pix ou transferência para um golpista, siga as orientações abaixo para tentar reverter a situação.</p></div><ol class="pn-steps"><li><span>Ligue para o seu banco agora, pelo aplicativo ou pelo telefone oficial (verso do cartão), e informe a fraude. Quanto mais rápido, maiores as chances de bloqueio dos valores.</span></li><li><span>Peça a abertura de contestação do Pix; o Banco Central prevê o <a href="https://www.bcb.gov.br/" target="_blank" rel="noopener">Mecanismo Especial de Devolução (MED)</a>.</span></li><li><span>Troque as senhas do aplicativo do banco e revise dispositivos conectados.</span></li><li><span>Reúna comprovantes, prints, números de telefone e perfis usados pelo golpista.</span></li></ol></div><div class="panel" id="p-cartao"><div class="pn-head"><h3>Compra ou cartão <span>fraudulento</span></h3><p>Se houve uso indevido do seu cartão ou uma compra em loja falsa, siga as orientações abaixo para tentar reverter a situação.</p></div><ol class="pn-steps"><li><span>Bloqueie o cartão pelo aplicativo ou pela central do banco.</span></li><li><span>Conteste as compras que você não reconhece e peça um novo cartão.</span></li><li><span>Se a compra foi feita em loja falsa, guarde anúncio, site e conversas.</span></li><li><span>Registre reclamação no <a href="https://www.consumidor.gov.br/" target="_blank" rel="noopener">consumidor.gov.br</a> e faça boletim de ocorrência.</span></li></ol></div><div class="panel" id="p-whats"><div class="pn-head"><h3>WhatsApp <span>clonado</span></h3><p>Se alguém assumiu a sua conta de WhatsApp, siga as orientações abaixo para retomar o controle.</p></div><ol class="pn-steps"><li><span>Reinstale o WhatsApp e ative-o com seu número para retomar o controle da conta.</span></li><li><span>Ative a verificação em duas etapas e defina um PIN que só você conheça.</span></li><li><span>Avise seus contatos, por outro meio, para não enviarem dinheiro.</span></li><li><span>Guarde prints das mensagens do golpista e consulte a <a href="https://faq.whatsapp.com/" target="_blank" rel="noopener">central de ajuda do WhatsApp</a>.</span></li><li><span>Registre um boletim de ocorrência.</span></li></ol></div><div class="panel" id="p-conta"><div class="pn-head"><h3>Conta ou senha <span>invadida</span></h3><p>Se a sua conta ou senha foi invadida, siga as orientações abaixo para recuperar o acesso e se proteger.</p></div><ol class="pn-steps"><li><span>Tente recuperar o acesso pelos recursos oficiais do serviço.</span></li><li><span>Troque a senha da conta e de outras que usam a mesma senha.</span></li><li><span>Ative a autenticação em dois fatores e encerre sessões desconhecidas.</span></li><li><span>Avise seus contatos e denuncie perfis falsos na plataforma.</span></li></ol></div><div class="panel" id="p-dados"><div class="pn-head"><h3>Dados pessoais <span>vazados ou entregues</span></h3><p>Se seus dados pessoais foram vazados ou entregues a um golpista, siga as orientações abaixo para reduzir os riscos.</p></div><ol class="pn-steps"><li><span>Troque as senhas de contas ligadas ao e-mail e telefone expostos.</span></li><li><span>Avise o banco e acompanhe movimentações e consultas ao seu CPF.</span></li><li><span>Desconfie de contatos que citem seus dados para ganhar confiança.</span></li><li><span>Registre um boletim de ocorrência se houver uso indevido dos seus documentos.</span></li></ol></div></div>
+  </div>
+</section>
+<section class="pa" aria-labelledby="pa-t">
+  <div class="pa-in">
+    <div class="pa-left">
+      <p class="pa-label">Proteja suas contas</p>
+      <h2 id="pa-t">Sua segurança<br>começa com cuidados<br>simples <span>— em um só lugar</span></h2>
+      <p class="pa-desc">Evite fraudes, proteja seus dados e<br class="pa-br"> mantenha suas contas seguras com<br class="pa-br"> boas práticas de segurança digital.</p>
+      <a class="pa-btn" href="https://cartilha.cert.br/" target="_blank" rel="noopener">Saiba mais <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="pa-tl">
+      <span class="pa-axis" aria-hidden="true"></span>
+      <article class="pa-card c1"><h3>Troque suas senhas</h3><p>Comece pelo e-mail, banco e<br class="pa-br"> outras contas importantes.</p></article>
+      <article class="pa-card c2"><h3>Ative a autenticação<br class="pa-br"> em dois fatores</h3><p>Adicione uma camada extra<br class="pa-br"> de proteção às suas contas.</p></article>
+      <article class="pa-card c3"><h3>Encerre sessões e<br class="pa-br"> aparelhos desconhecidos</h3><p>Saia de dispositivos que você<br class="pa-br"> não reconhece ou não utiliza.</p></article>
+      <article class="pa-card c4"><h3>Desinstale aplicativos suspeitos</h3><p>Remova apps que você não<br class="pa-br"> lembra de ter instalado.</p></article>
+      <span class="pa-con k1" aria-hidden="true"></span><span class="pa-con k2" aria-hidden="true"></span><span class="pa-con k3" aria-hidden="true"></span><span class="pa-con k4" aria-hidden="true"></span>
+      <span class="pa-dot d1" aria-hidden="true"></span><span class="pa-dot d2" aria-hidden="true"></span><span class="pa-dot d3" aria-hidden="true"></span><span class="pa-dot d4" aria-hidden="true"></span>
+    </div>
+  </div>
+</section>
+<section class="ev">
+  <div class="ev-wrap">
+    <p class="ev-eyebrow">Guardando evidências</p>
+    <h2>Mantenha <span>registros</span> de tudo</h2>
+    <p class="ev-sub">Guardar provas pode ser essencial para denunciar e recuperar sua conta.</p>
+    <div class="ev-grid">
+      <div class="ev-card"><h3>Faça um print de conversas</h3><p>Salve o histórico das conversas com o golpista, incluindo datas e informações importantes.</p></div>
+      <div class="ev-card ev-blue"><h3>Anote os dados e valores</h3><p>Registre os números, links, anúncios, perfis e os valores envolvidos na fraude.</p></div>
+      <div class="ev-card"><h3>Não apague as mensagens</h3><p>Mantenha todas as mensagens, mesmo as que parecem inúteis.</p></div>
+      <div class="ev-card ev-blue"><h3>Guarde tudo</h3><p>Armazene as evidências e, se possível, faça capturas de tela para apresentar às autoridades.</p></div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="sh"><h2>Quem acionar</h2><p>Confirme sempre os contatos nos sites oficiais. O Conecta Saber nunca pede dados pessoais ou bancários.</p></div>
+    <div class="canais"><div class="canal"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V10M9 21V10M15 21V10M19 21V10M2 10l10-7 10 7"/></svg></span><h3>Movimentação indevida</h3><p>Seu banco (app ou telefone oficial) e o <a href="https://www.bcb.gov.br/" target="_blank" rel="noopener">Banco Central</a></p></div><div class="canal"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v5M12 16h.01"/></svg></span><h3>Registrar ocorrência</h3><p>Delegacia ou delegacia eletrônica do seu estado. Emergência: <strong>190</strong></p></div><div class="canal"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9l1-5h16l1 5M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0M5 12v8h14v-8"/></svg></span><h3>Problema com compra</h3><p><a href="https://www.consumidor.gov.br/" target="_blank" rel="noopener">consumidor.gov.br</a> e Procon da sua cidade</p></div><div class="canal"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></span><h3>Crimes na internet</h3><p><a href="https://new.safernet.org.br/denuncie" target="_blank" rel="noopener">SaferNet Brasil</a></p></div><div class="canal"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 1 1 21 11.5z"/></svg></span><h3>Conta de WhatsApp</h3><p><a href="https://faq.whatsapp.com/" target="_blank" rel="noopener">Central de ajuda do WhatsApp</a></p></div><div class="canal"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><h3>Orientações gerais</h3><p><a href="https://cartilha.cert.br/" target="_blank" rel="noopener">Cartilha de Segurança (CERT.br)</a></p></div></div>
+    <p class="fonte">Este guia é informativo e não substitui orientação jurídica. Prazos e procedimentos podem mudar; consulte as fontes oficiais.</p>
+  </div>
+</section>
+</main>
+<!-- <footer>: rodapé com sobre, links e fontes -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="ft-top">
+      <p class="ft-tag">Conhecimento que conecta,<br>segurança que protege.</p>
+      <div class="ft-news">
+        <p class="ft-news-t" id="ft-news-t">Acesse informações e aprenda mais!</p>
+        <!-- formulário de e-mail do rodapé; type="email" e required: o navegador já confere se é um e-mail -->
+        <form class="ft-form" id="ft-form" novalidate aria-labelledby="ft-news-t">
+          <label class="sr-only" for="ft-email">Seu e-mail</label>
+          <input type="email" id="ft-email" name="email" placeholder="Digite seu e-mail" autocomplete="email" required>
+          <button type="submit">Inscrever-se</button>
+        </form>
+        <p class="ft-msg" id="ft-msg" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="ft-cols">
+      <div>
+        <h3>Sobre o Conecta Saber</h3>
+        <p>O Conecta Saber ajuda a ampliar a segurança digital no dia a dia, facilitando a identificação de golpes e uma navegação mais segura.</p>
+      </div>
+      <div>
+        <h3>Navegue</h3>
+        <ul><li><a href="../index.html">Início</a></li><li><a href="golpes.html">Conheça os golpes</a></li><li><a href="proteja-se.html">Proteja-se</a></li><li><a href="simulacao.html">Simulação e emergência</a></li><li><a href="glossario.html">Glossário</a></li><li><a href="contato.html">Contato</a></li></ul>
+      </div>
+      <div>
+        <h3>Fontes</h3>
+        <ul>
+          <!-- target="_blank" abre em nova aba; rel="noopener" é por segurança -->
+          <li><a href="https://cartilha.cert.br/" target="_blank" rel="noopener">Cartilha de Segurança (CERT.br)</a></li>
+          <li><a href="https://www.gov.br/pt-br" target="_blank" rel="noopener">Portal gov.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copy">© 2026 Conecta Saber – projeto acadêmico de caráter educativo. As orientações têm finalidade informativa.</p>
+  </div>
+</footer>
+</body>
+</html>

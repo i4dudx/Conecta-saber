@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR"> <!-- lang="pt-BR": idioma da página (ajuda leitores de tela e o Google) -->
+<head> <!-- <head>: informações sobre a página; nada aqui aparece no conteúdo -->
+<meta charset="UTF-8"> <!-- UTF-8: permite acentos e ç -->
+<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- deixa a página responsiva: no celular ela usa a largura da tela -->
+<title>Conheça os golpes | Conecta Saber</title> <!-- texto que aparece na aba do navegador -->
+<meta name="description" content="As nove principais categorias de golpes digitais, com sinais de alerta e como se proteger."> <!-- resumo que aparece no Google -->
+<link rel="icon" type="image/png" href="../imagens/logo/favicon.png"> <!-- ícone da aba (favicon) -->
+<!-- preconnect: já abre conexão com o Google Fonts para a fonte carregar mais rápido -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"> <!-- carrega a fonte Inter do Google Fonts -->
+<link rel="stylesheet" href="../css/style.css"> <!-- liga o arquivo CSS principal (visual do site) -->
+<link rel="stylesheet" href="../css/motion.css"> <!-- CSS das animações -->
+<script src="../js/motion.js"></script> <!-- JavaScript das animações -->
+<script src="../js/script.js" defer></script> <!-- JavaScript principal; defer = só roda depois que o HTML carregar -->
+</head>
+<body class="inner"> <!-- <body>: tudo o que aparece na tela. A classe muda o estilo da home ou das páginas internas -->
+<!-- acessibilidade: link escondido que aparece com a tecla Tab e pula direto para o conteúdo -->
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<!-- <header>: cabeçalho com logo, menu e botão de contato -->
+<header class="site-header">
+  <div class="container nav">
+    <!-- <a> = link; <img> = imagem; alt = texto lido por leitores de tela se a imagem não carregar -->
+    <a class="logo" href="../index.html" aria-label="Conecta Saber — página inicial"><img src="../imagens/figma/logo-figma.png" alt="Conecta Saber" width="141" height="57"></a>
+    <!-- <button>: botão "Menu" que só aparece no celular; aria-expanded diz se o menu está aberto -->
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <!-- <ul> = lista; cada <li> é um item do menu. aria-current="page" marca a página atual -->
+    <ul class="menu" id="menu">
+      <li><a class="link" href="../index.html">Início</a></li><li><a class="link" href="golpes.html" aria-current="page">Conheça os golpes</a></li><li><a class="link" href="proteja-se.html">Proteja-se</a></li><li><a class="link" href="simulacao.html">Simulação</a></li><li><a class="link" href="emergencia.html">Guia de emergência</a></li><li><a class="link" href="glossario.html">Glossário</a></li>
+      <li><a class="btn btn-help" href="contato.html">Contato</a></li>
+    </ul>
+  </div>
+</header>
+<!-- <main>: o conteúdo principal da página (id="conteudo" é o destino do link "Pular para o conteúdo") -->
+<main id="conteudo">
+<!-- <section>: cada bloco temático da página -->
+<section class="ph">
+  <div class="container ph-grid">
+    <div class="ph-text">
+      <p class="ph-eyebrow">Conheça os golpes</p>
+      <!-- <h1>: título principal da página (só existe um por página) -->
+      <h1>Reconheça o golpe <em>antes</em> de cair</h1>
+      <p class="ph-sub">As fraudes digitais mais comuns, explicadas de forma simples e visual.</p>
+      
+      <div class="ph-actions"><a class="btn btn-light" href="#golpes">Ver os golpes</a><a class="btn btn-dark" href="simulacao.html">Fazer a simulação</a></div>
+    </div>
+    <div class="ph-visual"><div class="pv pv-chat" role="list" aria-label="Exemplos de mensagens: toque para ver o porquê">
+  <div class="pv-card pv-a" role="listitem" tabindex="0" aria-expanded="false"><span class="pv-av">SMS</span><div><b>Central de segurança</b><small>“Sua conta será bloqueada hoje. Clique aqui.”</small><small class="pv-why">Sinal de alerta: cria urgência e pede um clique em link. Banco não pede isso por mensagem.</small></div><span class="pv-tag bad">Suspeita</span></div>
+  <div class="pv-card pv-b" role="listitem" tabindex="0" aria-expanded="false"><span class="pv-av wa">WA</span><div><b>“Mãe” (número novo)</b><small>“Perdi meu celular. Faz um Pix pra mim?”</small><small class="pv-why">Sinal de alerta: número novo pedindo Pix. Ligue para a pessoa no número antigo antes de pagar.</small></div><span class="pv-tag bad">Suspeita</span></div>
+  <div class="pv-card pv-c" role="listitem" tabindex="0" aria-expanded="false"><span class="pv-av em">@</span><div><b>Loja onde você comprou</b><small>“Seu pedido foi enviado.”</small><small class="pv-why">Sem urgência e sem pedido de dados ou dinheiro. Mesmo assim, confira o pedido no site ou app oficial da loja.</small></div><span class="pv-tag good">Legítima</span></div>
+</div></div>
+  </div>
+</section>
+
+<section id="golpes">
+  <div class="container">
+    <div class="sh"><h2>Qual golpe você quer conhecer?</h2><p>Escolha um card para abrir a página completa do golpe.</p></div>
+    <div class="gl-grid"><a class="gl-card" href="golpe-pix.html"><img class="gl-img" src="../imagens/golpes/pix.jpg" alt="" loading="lazy"><span class="gl-shade" aria-hidden="true"></span><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span><h3>Pix e transferências</h3><p>Fraudes que levam a vítima a transferir dinheiro por engano, por pressão ou por comprovantes falsos.</p><span class="gl-sum">Golpes em que o criminoso faz a vítima enviar dinheiro por Pix ou transferência, ou a convence de que um pagamento foi feito quando não foi.</span><span class="gl-more">Saiba mais <svg class="" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="gl-card" href="golpe-compras.html"><img class="gl-img" src="../imagens/golpes/compras.jpg" alt="" loading="lazy"><span class="gl-shade" aria-hidden="true"></span><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg></span><h3>Compras online</h3><p>Lojas falsas, produtos que nunca chegam e anúncios fraudulentos com preços irreais.</p><span class="gl-sum">Sites, perfis ou anúncios que simulam uma loja para receber o pagamento e não entregar o produto, ou entregar algo diferente do anunciado.</span><span class="gl-more">Saiba mais <svg class="" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="gl-card" href="golpe-phishing.html"><img class="gl-img" src="../imagens/golpes/phishing.jpg" alt="" loading="lazy"><span class="gl-shade" aria-hidden="true"></span><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span><h3>Phishing</h3><p>Mensagens, e-mails e links falsos que imitam empresas e instituições para roubar dados.</p><span class="gl-sum">Técnica em que o golpista se passa por uma empresa ou órgão conhecido para fazer a vítima clicar em um link, abrir um anexo ou informar dados pessoais.</span><span class="gl-more">Saiba mais <svg class="" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="gl-card" href="golpe-whatsapp.html"><img class="gl-img" src="../imagens/golpes/whatsapp.jpg" alt="" loading="lazy"><span class="gl-shade" aria-hidden="true"></span><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 1 1 21 11.5z"/></svg></span><h3>WhatsApp</h3><p>Clonagem de contas, perfis que se passam por conhecidos e pedidos falsos de dinheiro.</p><span class="gl-sum">Golpes em que o criminoso assume o controle de uma conta ou usa foto e nome de alguém próximo para pedir dinheiro ou códigos.</span><span class="gl-more">Saiba mais <svg class="" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="gl-card" href="golpe-emprego.html"><img class="gl-img" src="../imagens/golpes/emprego.jpg" alt="" loading="lazy"><span class="gl-shade" aria-hidden="true"></span><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span><h3>Falsas oportunidades de emprego</h3><p>Vagas inexistentes, cobranças de taxas e propostas profissionais fraudulentas.</p><span class="gl-sum">Ofertas de trabalho falsas que se aproveitam da necessidade de renda para cobrar valores, coletar documentos ou envolver a vítima em esquemas.</span><span class="gl-more">Saiba mais <svg class="" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="gl-card" href="golpe-redes.html"><img class="gl-img" src="../imagens/golpes/redes.jpg" alt="" loading="lazy"><span class="gl-shade" aria-hidden="true"></span><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></span><h3>Redes sociais</h3><p>Invasão de contas, perfis falsos e falsas promoções e sorteios.</p><span class="gl-sum">Fraudes que usam as redes sociais para roubar contas, criar perfis falsos ou enganar com prêmios que não existem.</span><span class="gl-more">Saiba mais <svg class="" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="gl-card" href="golpe-investimentos.html"><img class="gl-img" src="../imagens/golpes/investimentos.jpg" alt="" loading="lazy"><span class="gl-shade" aria-hidden="true"></span><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg></span><h3>Investimentos</h3><p>Promessas de lucro garantido, pirâmides financeiras e investimentos fraudulentos.</p><span class="gl-sum">Falsas oportunidades que prometem retorno alto e rápido, mas só funcionam enquanto entram novos “investidores”, ou que simplesmente não existem.</span><span class="gl-more">Saiba mais <svg class="" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="gl-card" href="golpe-engenharia.html"><img class="gl-img" src="../imagens/golpes/engenharia.jpg" alt="" loading="lazy"><span class="gl-shade" aria-hidden="true"></span><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg></span><h3>Engenharia social</h3><p>Manipulação psicológica, falsas urgências e pedidos indevidos de informações pessoais.</p><span class="gl-sum">Conjunto de técnicas que exploram emoções (medo, pressa, confiança, curiosidade) para levar a vítima a entregar informações ou realizar ações por conta própria. Está presente em quase todos os outros golpes.</span><span class="gl-more">Saiba mais <svg class="" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="gl-card" href="golpe-central.html"><img class="gl-img" src="../imagens/golpes/central.jpg" alt="" loading="lazy"><span class="gl-shade" aria-hidden="true"></span><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><h3>Falsas centrais de atendimento</h3><p>Falsos funcionários de banco que inventam um problema para obter dados e dinheiro.</p><span class="gl-sum">Criminosos se passam por funcionários do banco ou de empresas conhecidas, por ligação, SMS, WhatsApp ou e-mail, e usam um problema inventado para obter dados, levar a vítima a movimentar dinheiro ou instalar aplicativos de acesso remoto.</span><span class="gl-more">Saiba mais <svg class="" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+  </div>
+</section>
+</main>
+<!-- <footer>: rodapé com sobre, links e fontes -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="ft-top">
+      <p class="ft-tag">Conhecimento que conecta,<br>segurança que protege.</p>
+      <div class="ft-news">
+        <p class="ft-news-t" id="ft-news-t">Acesse informações e aprenda mais!</p>
+        <!-- formulário de e-mail do rodapé; type="email" e required: o navegador já confere se é um e-mail -->
+        <form class="ft-form" id="ft-form" novalidate aria-labelledby="ft-news-t">
+          <label class="sr-only" for="ft-email">Seu e-mail</label>
+          <input type="email" id="ft-email" name="email" placeholder="Digite seu e-mail" autocomplete="email" required>
+          <button type="submit">Inscrever-se</button>
+        </form>
+        <p class="ft-msg" id="ft-msg" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="ft-cols">
+      <div>
+        <h3>Sobre o Conecta Saber</h3>
+        <p>O Conecta Saber ajuda a ampliar a segurança digital no dia a dia, facilitando a identificação de golpes e uma navegação mais segura.</p>
+      </div>
+      <div>
+        <h3>Navegue</h3>
+        <ul><li><a href="../index.html">Início</a></li><li><a href="golpes.html">Conheça os golpes</a></li><li><a href="proteja-se.html">Proteja-se</a></li><li><a href="simulacao.html">Simulação e emergência</a></li><li><a href="glossario.html">Glossário</a></li><li><a href="contato.html">Contato</a></li></ul>
+      </div>
+      <div>
+        <h3>Fontes</h3>
+        <ul>
+          <!-- target="_blank" abre em nova aba; rel="noopener" é por segurança -->
+          <li><a href="https://cartilha.cert.br/" target="_blank" rel="noopener">Cartilha de Segurança (CERT.br)</a></li>
+          <li><a href="https://www.gov.br/pt-br" target="_blank" rel="noopener">Portal gov.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copy">© 2026 Conecta Saber – projeto acadêmico de caráter educativo. As orientações têm finalidade informativa.</p>
+  </div>
+</footer>
+</body>
+</html>

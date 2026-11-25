@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR"> <!-- lang="pt-BR": idioma da página (ajuda leitores de tela e o Google) -->
+<head> <!-- <head>: informações sobre a página; nada aqui aparece no conteúdo -->
+<meta charset="UTF-8"> <!-- UTF-8: permite acentos e ç -->
+<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- deixa a página responsiva: no celular ela usa a largura da tela -->
+<title>Simulação: Verdadeiro ou golpe? | Conecta Saber</title> <!-- texto que aparece na aba do navegador -->
+<meta name="description" content="Teste seus conhecimentos sobre golpes digitais com situações fictícias e feedback imediato."> <!-- resumo que aparece no Google -->
+<link rel="icon" type="image/png" href="../imagens/logo/favicon.png"> <!-- ícone da aba (favicon) -->
+<!-- preconnect: já abre conexão com o Google Fonts para a fonte carregar mais rápido -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"> <!-- carrega a fonte Inter do Google Fonts -->
+<link rel="stylesheet" href="../css/style.css"> <!-- liga o arquivo CSS principal (visual do site) -->
+<link rel="stylesheet" href="../css/motion.css"> <!-- CSS das animações -->
+<script src="../js/motion.js"></script> <!-- JavaScript das animações -->
+<script src="../js/script.js" defer></script> <!-- JavaScript principal; defer = só roda depois que o HTML carregar -->
+</head>
+<body class="inner"> <!-- <body>: tudo o que aparece na tela. A classe muda o estilo da home ou das páginas internas -->
+<!-- acessibilidade: link escondido que aparece com a tecla Tab e pula direto para o conteúdo -->
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<!-- <header>: cabeçalho com logo, menu e botão de contato -->
+<header class="site-header">
+  <div class="container nav">
+    <!-- <a> = link; <img> = imagem; alt = texto lido por leitores de tela se a imagem não carregar -->
+    <a class="logo" href="../index.html" aria-label="Conecta Saber — página inicial"><img src="../imagens/figma/logo-figma.png" alt="Conecta Saber" width="141" height="57"></a>
+    <!-- <button>: botão "Menu" que só aparece no celular; aria-expanded diz se o menu está aberto -->
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <!-- <ul> = lista; cada <li> é um item do menu. aria-current="page" marca a página atual -->
+    <ul class="menu" id="menu">
+      <li><a class="link" href="../index.html">Início</a></li><li><a class="link" href="golpes.html">Conheça os golpes</a></li><li><a class="link" href="proteja-se.html">Proteja-se</a></li><li><a class="link" href="simulacao.html" aria-current="page">Simulação</a></li><li><a class="link" href="emergencia.html">Guia de emergência</a></li><li><a class="link" href="glossario.html">Glossário</a></li>
+      <li><a class="btn btn-help" href="contato.html">Contato</a></li>
+    </ul>
+  </div>
+</header>
+<!-- <main>: o conteúdo principal da página (id="conteudo" é o destino do link "Pular para o conteúdo") -->
+<main id="conteudo">
+<!-- <section>: cada bloco temático da página -->
+<section class="ph">
+  <div class="container ph-grid">
+    <div class="ph-text">
+      <p class="ph-eyebrow">Simulação</p>
+      <!-- <h1>: título principal da página (só existe um por página) -->
+      <h1>Verdadeiro ou <em>golpe?</em></h1>
+      <p class="ph-sub">8 situações fictícias, resposta na hora e os sinais de alerta explicados.</p>
+      
+      <div class="ph-actions"><a class="btn btn-light" href="#quiz">Começar agora</a></div>
+    </div>
+    <div class="ph-visual"><div class="pv pv-quiz">
+  <div class="pv-card big"><small>Situação 3 de 8</small><p>“Seu acesso será bloqueado hoje. Confirme seus dados em: segur-anca.xyz”</p>
+  <div class="pv-btns" role="group" aria-label="Sua resposta"><button type="button" data-r="legitima" aria-pressed="false">É legítima</button><button type="button" class="on" data-r="golpe" aria-pressed="true">É golpe</button></div></div>
+  <div class="pv-card pv-ok" role="status" aria-live="polite"><span class="pv-okdot">✓</span><span class="pv-okt">Ótimo! Você identificou o golpe.</span></div>
+</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="qz" id="quiz">
+      <div class="qz-main">
+        <h2 class="qz-title">Cibersegurança Quiz</h2>
+        <div class="qz-bar"><div class="qz-track" role="progressbar" aria-label="Progresso da simulação" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div><b id="qz-pct">0%</b></div>
+        <div id="quiz-area">
+          <p class="qz-q"><strong id="qz-num">Situação 1/8:</strong> Esta mensagem é legítima ou é golpe?</p>
+          <div class="qz-sit"><span class="qz-from" id="sit-origem"></span><span id="sit-texto">Ative o JavaScript para jogar.</span></div>
+          <div class="qz-opts" role="group" aria-label="Resposta">
+            <button class="qz-opt" type="button" data-resposta="legitima">É legítima</button>
+            <button class="qz-opt" type="button" data-resposta="golpe">É golpe</button>
+          </div>
+          <div class="qz-fb" id="quiz-feedback" role="status" aria-live="polite"></div>
+          <div class="qz-nav">
+            <button class="qz-btn qz-prev" id="qz-prev" type="button">Anterior</button>
+            <button class="qz-btn qz-next" id="qz-next" type="button">Próxima</button>
+          </div>
+        </div>
+        <div class="qz-result" id="quiz-resultado" hidden></div>
+      </div>
+      <aside class="qz-side" aria-label="Desempenho e navegação">
+        <div class="qz-score" aria-live="polite"><b id="qz-score-pct">0%</b><span id="qz-score-txt">Nenhuma resposta enviada</span></div>
+        <!-- <ol>: lista numerada (ordem importa) -->
+        <ol class="qz-list" id="qz-list"></ol>
+      </aside>
+    </div>
+    <p class="fonte" style="text-align:center">Todas as situações são fictícias e criadas para fins educativos.</p>
+  </div>
+</section>
+</main>
+<!-- <footer>: rodapé com sobre, links e fontes -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="ft-top">
+      <p class="ft-tag">Conhecimento que conecta,<br>segurança que protege.</p>
+      <div class="ft-news">
+        <p class="ft-news-t" id="ft-news-t">Acesse informações e aprenda mais!</p>
+        <!-- formulário de e-mail do rodapé; type="email" e required: o navegador já confere se é um e-mail -->
+        <form class="ft-form" id="ft-form" novalidate aria-labelledby="ft-news-t">
+          <label class="sr-only" for="ft-email">Seu e-mail</label>
+          <input type="email" id="ft-email" name="email" placeholder="Digite seu e-mail" autocomplete="email" required>
+          <button type="submit">Inscrever-se</button>
+        </form>
+        <p class="ft-msg" id="ft-msg" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="ft-cols">
+      <div>
+        <h3>Sobre o Conecta Saber</h3>
+        <p>O Conecta Saber ajuda a ampliar a segurança digital no dia a dia, facilitando a identificação de golpes e uma navegação mais segura.</p>
+      </div>
+      <div>
+        <h3>Navegue</h3>
+        <ul><li><a href="../index.html">Início</a></li><li><a href="golpes.html">Conheça os golpes</a></li><li><a href="proteja-se.html">Proteja-se</a></li><li><a href="simulacao.html">Simulação e emergência</a></li><li><a href="glossario.html">Glossário</a></li><li><a href="contato.html">Contato</a></li></ul>
+      </div>
+      <div>
+        <h3>Fontes</h3>
+        <ul>
+          <!-- target="_blank" abre em nova aba; rel="noopener" é por segurança -->
+          <li><a href="https://cartilha.cert.br/" target="_blank" rel="noopener">Cartilha de Segurança (CERT.br)</a></li>
+          <li><a href="https://www.gov.br/pt-br" target="_blank" rel="noopener">Portal gov.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copy">© 2026 Conecta Saber – projeto acadêmico de caráter educativo. As orientações têm finalidade informativa.</p>
+  </div>
+</footer>
+</body>
+</html>

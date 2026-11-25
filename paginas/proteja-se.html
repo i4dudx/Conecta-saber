@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR"> <!-- lang="pt-BR": idioma da página (ajuda leitores de tela e o Google) -->
+<head> <!-- <head>: informações sobre a página; nada aqui aparece no conteúdo -->
+<meta charset="UTF-8"> <!-- UTF-8: permite acentos e ç -->
+<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- deixa a página responsiva: no celular ela usa a largura da tela -->
+<title>Proteja-se | Conecta Saber</title> <!-- texto que aparece na aba do navegador -->
+<meta name="description" content="Boas práticas de segurança digital: senhas, autenticação em dois fatores, links suspeitos e mais."> <!-- resumo que aparece no Google -->
+<link rel="icon" type="image/png" href="../imagens/logo/favicon.png"> <!-- ícone da aba (favicon) -->
+<!-- preconnect: já abre conexão com o Google Fonts para a fonte carregar mais rápido -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"> <!-- carrega a fonte Inter do Google Fonts -->
+<link rel="stylesheet" href="../css/style.css"> <!-- liga o arquivo CSS principal (visual do site) -->
+<link rel="stylesheet" href="../css/motion.css"> <!-- CSS das animações -->
+<script src="../js/motion.js"></script> <!-- JavaScript das animações -->
+<script src="../js/script.js" defer></script> <!-- JavaScript principal; defer = só roda depois que o HTML carregar -->
+</head>
+<body class="inner"> <!-- <body>: tudo o que aparece na tela. A classe muda o estilo da home ou das páginas internas -->
+<!-- acessibilidade: link escondido que aparece com a tecla Tab e pula direto para o conteúdo -->
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<!-- <header>: cabeçalho com logo, menu e botão de contato -->
+<header class="site-header">
+  <div class="container nav">
+    <!-- <a> = link; <img> = imagem; alt = texto lido por leitores de tela se a imagem não carregar -->
+    <a class="logo" href="../index.html" aria-label="Conecta Saber — página inicial"><img src="../imagens/figma/logo-figma.png" alt="Conecta Saber" width="141" height="57"></a>
+    <!-- <button>: botão "Menu" que só aparece no celular; aria-expanded diz se o menu está aberto -->
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <!-- <ul> = lista; cada <li> é um item do menu. aria-current="page" marca a página atual -->
+    <ul class="menu" id="menu">
+      <li><a class="link" href="../index.html">Início</a></li><li><a class="link" href="golpes.html">Conheça os golpes</a></li><li><a class="link" href="proteja-se.html" aria-current="page">Proteja-se</a></li><li><a class="link" href="simulacao.html">Simulação</a></li><li><a class="link" href="emergencia.html">Guia de emergência</a></li><li><a class="link" href="glossario.html">Glossário</a></li>
+      <li><a class="btn btn-help" href="contato.html">Contato</a></li>
+    </ul>
+  </div>
+</header>
+<!-- <main>: o conteúdo principal da página (id="conteudo" é o destino do link "Pular para o conteúdo") -->
+<main id="conteudo">
+<!-- <section>: cada bloco temático da página -->
+<section class="ph">
+  <div class="container ph-grid">
+    <div class="ph-text">
+      <p class="ph-eyebrow">Proteja-se</p>
+      <!-- <h1>: título principal da página (só existe um por página) -->
+      <h1>Hábitos simples que <em>blindam</em> sua vida digital</h1>
+      <p class="ph-sub">Sete cuidados do dia a dia para proteger contas, dados e aparelhos.</p>
+      
+      <div class="ph-actions"><a class="btn btn-light" href="#habitos">Ver os hábitos</a><a class="btn btn-dark" href="simulacao.html">Testar meu olhar</a></div>
+    </div>
+    <div class="ph-visual" aria-hidden="true"><div class="pv pv-shield"><img src="../imagens/ilustracoes/escudo-3d.png" alt="" width="870" height="900">
+  <span class="pv-chip c1">✓ Senha forte</span><span class="pv-chip c2">✓ Verificação em duas etapas</span><span class="pv-chip c3">✓ Link conferido</span></div></div>
+  </div>
+</section>
+
+<section id="habitos" data-seletor>
+  <div class="container">
+    <div class="sh"><h2>Escolha um tema</h2><p>Pequenas atitudes fazem grande diferença.</p></div>
+    <div class="pt-grid">
+      <nav class="pt-nav" aria-label="Temas de proteção"><a class="pt-link" href="#senhas" data-alvo="senhas">Senhas</a><a class="pt-link" href="#dois-fatores" data-alvo="dois-fatores">Dois fatores</a><a class="pt-link" href="#links" data-alvo="links">Links suspeitos</a><a class="pt-link" href="#dados" data-alvo="dados">Dados pessoais</a><a class="pt-link" href="#wifi" data-alvo="wifi">Wi-Fi público</a><a class="pt-link" href="#compras" data-alvo="compras">Compras online</a><a class="pt-link" href="#dispositivos" data-alvo="dispositivos">Contas e aparelhos</a></nav>
+      <div class="pt-panels"><article class="pt-panel" id="senhas" data-painel="senhas"><div class="pn-head"><p class="pt-kicker">Hábito 01 de 07</p><h3>Como criar senhas <span>seguras</span></h3></div><ol class="pn-steps"><li><span>Use frases longas (12 caracteres ou mais) com palavras sem relação óbvia.</span></li><li><span>Não repita a mesma senha em contas diferentes.</span></li><li><span>Evite datas de aniversário, nomes e sequências como 123456.</span></li><li><span>Considere um gerenciador de senhas para guardá-las.</span></li></ol></article><article class="pt-panel" id="dois-fatores" data-painel="dois-fatores"><div class="pn-head"><p class="pt-kicker">Hábito 02 de 07</p><h3>Autenticação em dois <span>fatores</span></h3></div><ol class="pn-steps"><li><span>Adiciona uma segunda confirmação além da senha.</span></li><li><span>Prefira aplicativo autenticador ou chave de segurança ao SMS, quando possível.</span></li><li><span>Nunca informe o código a ninguém: ele é só seu.</span></li></ol></article><article class="pt-panel" id="links" data-painel="links"><div class="pn-head"><p class="pt-kicker">Hábito 03 de 07</p><h3>Como identificar links <span>suspeitos</span></h3></div><ol class="pn-steps"><li><span>Confira o endereço completo antes de clicar.</span></li><li><span>Desconfie de links encurtados em mensagens inesperadas.</span></li><li><span>Procure por letras trocadas, como “bamco” no lugar de “banco”.</span></li><li><span>Na dúvida, digite o endereço oficial no navegador.</span></li></ol></article><article class="pt-panel" id="dados" data-painel="dados"><div class="pn-head"><p class="pt-kicker">Hábito 04 de 07</p><h3>Cuidados com dados <span>pessoais</span></h3></div><ol class="pn-steps"><li><span>Compartilhe CPF, endereço e documentos apenas quando for realmente necessário.</span></li><li><span>Evite publicar fotos de documentos, boletos e cartões.</span></li><li><span>Revise as configurações de privacidade das redes sociais.</span></li></ol></article><article class="pt-panel" id="wifi" data-painel="wifi"><div class="pn-head"><p class="pt-kicker">Hábito 05 de 07</p><h3>Segurança em redes Wi-Fi <span>públicas</span></h3></div><ol class="pn-steps"><li><span>Evite acessar banco e fazer compras em Wi-Fi aberto.</span></li><li><span>Confirme o nome exato da rede com o estabelecimento.</span></li><li><span>Prefira os dados móveis para transações importantes.</span></li><li><span>Desative a conexão automática a redes abertas.</span></li></ol></article><article class="pt-panel" id="compras" data-painel="compras"><div class="pn-head"><p class="pt-kicker">Hábito 06 de 07</p><h3>Cuidados em compras e transações <span>online</span></h3></div><ol class="pn-steps"><li><span>Compre em sites que você conhece ou cuja reputação conferiu.</span></li><li><span>Desconfie de preços muito abaixo do mercado.</span></li><li><span>Prefira meios de pagamento com proteção ao comprador.</span></li><li><span>Guarde comprovantes e conversas da compra.</span></li></ol></article><article class="pt-panel" id="dispositivos" data-painel="dispositivos"><div class="pn-head"><p class="pt-kicker">Hábito 07 de 07</p><h3>Proteção de contas e <span>dispositivos</span></h3></div><ol class="pn-steps"><li><span>Mantenha sistema e aplicativos atualizados.</span></li><li><span>Instale aplicativos apenas das lojas oficiais.</span></li><li><span>Use bloqueio de tela e, se possível, biometria.</span></li><li><span>Faça cópias de segurança dos dados importantes.</span></li></ol></article></div>
+    </div>
+  </div>
+</section>
+<section class="np np2">
+  <div class="container">
+    <div class="sh"><h2>Evite × <span>Prefira</span></h2><p>Situações comuns e a atitude mais segura.</p></div>
+    <div class="np-cols" aria-hidden="true"><span>Situação</span><span>Evite</span><span>Prefira</span></div>
+    <ul class="np-list" aria-label="Evite e prefira"><li class="np-item"><h3 class="np-sit">Criar senha</h3><p class="np-bad">“123456” ou data de nascimento</p><p class="np-good">Frase longa e única por conta</p></li><li class="np-item"><h3 class="np-sit">Receber link</h3><p class="np-bad">Clicar sem conferir</p><p class="np-good">Conferir ou digitar o site oficial</p></li><li class="np-item"><h3 class="np-sit">Código por SMS</h3><p class="np-bad">Passar para quem pediu</p><p class="np-good">Nunca compartilhar</p></li><li class="np-item"><h3 class="np-sit">Wi-Fi público</h3><p class="np-bad">Acessar o banco</p><p class="np-good">Usar dados móveis</p></li><li class="np-item"><h3 class="np-sit">Comprar online</h3><p class="np-bad">Pix para loja desconhecida</p><p class="np-good">Pesquisar a loja e pagar com proteção</p></li></ul>
+    <div class="np-foot"><div><h3>Pronto para testar?</h3><p>Faça a simulação e veja se você reconhece os sinais.</p></div><a class="btn btn-light np-go" href="simulacao.html">Começar <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    <p class="fonte">Quer se aprofundar? Leia a <a href="https://cartilha.cert.br/" target="_blank" rel="noopener">Cartilha de Segurança do CERT.br</a>.</p>
+  </div>
+</section>
+</main>
+<!-- <footer>: rodapé com sobre, links e fontes -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="ft-top">
+      <p class="ft-tag">Conhecimento que conecta,<br>segurança que protege.</p>
+      <div class="ft-news">
+        <p class="ft-news-t" id="ft-news-t">Acesse informações e aprenda mais!</p>
+        <!-- formulário de e-mail do rodapé; type="email" e required: o navegador já confere se é um e-mail -->
+        <form class="ft-form" id="ft-form" novalidate aria-labelledby="ft-news-t">
+          <label class="sr-only" for="ft-email">Seu e-mail</label>
+          <input type="email" id="ft-email" name="email" placeholder="Digite seu e-mail" autocomplete="email" required>
+          <button type="submit">Inscrever-se</button>
+        </form>
+        <p class="ft-msg" id="ft-msg" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="ft-cols">
+      <div>
+        <h3>Sobre o Conecta Saber</h3>
+        <p>O Conecta Saber ajuda a ampliar a segurança digital no dia a dia, facilitando a identificação de golpes e uma navegação mais segura.</p>
+      </div>
+      <div>
+        <h3>Navegue</h3>
+        <ul><li><a href="../index.html">Início</a></li><li><a href="golpes.html">Conheça os golpes</a></li><li><a href="proteja-se.html">Proteja-se</a></li><li><a href="simulacao.html">Simulação e emergência</a></li><li><a href="glossario.html">Glossário</a></li><li><a href="contato.html">Contato</a></li></ul>
+      </div>
+      <div>
+        <h3>Fontes</h3>
+        <ul>
+          <!-- target="_blank" abre em nova aba; rel="noopener" é por segurança -->
+          <li><a href="https://cartilha.cert.br/" target="_blank" rel="noopener">Cartilha de Segurança (CERT.br)</a></li>
+          <li><a href="https://www.gov.br/pt-br" target="_blank" rel="noopener">Portal gov.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copy">© 2026 Conecta Saber – projeto acadêmico de caráter educativo. As orientações têm finalidade informativa.</p>
+  </div>
+</footer>
+</body>
+</html>

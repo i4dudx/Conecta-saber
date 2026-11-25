@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR"> <!-- lang="pt-BR": idioma da página (ajuda leitores de tela e o Google) -->
+<head> <!-- <head>: informações sobre a página; nada aqui aparece no conteúdo -->
+<meta charset="UTF-8"> <!-- UTF-8: permite acentos e ç -->
+<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- deixa a página responsiva: no celular ela usa a largura da tela -->
+<title>Segurança digital e prevenção de golpes | Conecta Saber</title> <!-- texto que aparece na aba do navegador -->
+<meta name="description" content="Portal educativo sobre segurança digital: conheça os golpes, aprenda a se proteger e saiba como agir."> <!-- resumo que aparece no Google -->
+<link rel="icon" type="image/png" href="imagens/logo/favicon.png"> <!-- ícone da aba (favicon) -->
+<!-- preconnect: já abre conexão com o Google Fonts para a fonte carregar mais rápido -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"> <!-- carrega a fonte Inter do Google Fonts -->
+<link rel="stylesheet" href="css/style.css"> <!-- liga o arquivo CSS principal (visual do site) -->
+<link rel="stylesheet" href="css/motion.css"> <!-- CSS das animações -->
+<script src="js/motion.js"></script> <!-- JavaScript das animações -->
+<script src="js/script.js" defer></script> <!-- JavaScript principal; defer = só roda depois que o HTML carregar -->
+</head>
+<body class="home"> <!-- <body>: tudo o que aparece na tela. A classe muda o estilo da home ou das páginas internas -->
+<!-- acessibilidade: link escondido que aparece com a tecla Tab e pula direto para o conteúdo -->
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<!-- <header>: cabeçalho com logo, menu e botão de contato -->
+<header class="site-header">
+  <div class="container nav">
+    <!-- <a> = link; <img> = imagem; alt = texto lido por leitores de tela se a imagem não carregar -->
+    <a class="logo" href="index.html" aria-label="Conecta Saber — página inicial"><img src="imagens/figma/logo-figma.png" alt="Conecta Saber" width="141" height="57"></a>
+    <!-- <button>: botão "Menu" que só aparece no celular; aria-expanded diz se o menu está aberto -->
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <!-- <ul> = lista; cada <li> é um item do menu. aria-current="page" marca a página atual -->
+    <ul class="menu" id="menu">
+      <li><a class="link" href="index.html" aria-current="page">Início</a></li><li><a class="link" href="paginas/golpes.html">Conheça os golpes</a></li><li><a class="link" href="paginas/proteja-se.html">Proteja-se</a></li><li><a class="link" href="paginas/simulacao.html">Simulação</a></li><li><a class="link" href="paginas/emergencia.html">Guia de emergência</a></li><li><a class="link" href="paginas/glossario.html">Glossário</a></li>
+      <li><a class="btn btn-help" href="paginas/contato.html">Contato</a></li>
+    </ul>
+  </div>
+</header>
+<!-- <main>: o conteúdo principal da página (id="conteudo" é o destino do link "Pular para o conteúdo") -->
+<main id="conteudo">
+<!-- HERO: primeira dobra da página, com o título principal e os botões de ação -->
+<div class="hero-figma">
+  <div class="hf-inner">
+    <p class="hf-eyebrow">Portal de educação digital</p>
+    <!-- <h1>: título principal da página (só existe um por página) -->
+    <h1 class="hf-title"><span>Sua segurança digital</span><span>começa com <em>a informação</em></span></h1>
+    <p class="hf-desc">Conhecimento para identificar ameaças e navegar com segurança.</p>
+    <div class="hf-actions"><a class="hf-btn hf-light" href="paginas/golpes.html">Explore as ameaças</a><a class="hf-btn hf-dark" href="paginas/simulacao.html">Fazer a simulação</a></div>
+    <p class="hf-note">Entenda os riscos. Fortaleça sua proteção. <img src="imagens/figma/escudo.png" alt="" width="23" height="23"></p>
+    <ul class="hf-benefits"><li>9 categorias de golpes</li><li aria-hidden="true" class="dot">•</li><li>Simulação interativa</li><li aria-hidden="true" class="dot">•</li><li>Guia de emergência</li></ul>
+  </div>
+</div>
+
+<!-- <section>: cada bloco temático da página -->
+<!-- "Por onde começar?": título, botões e 3 cards de atalho -->
+<section class="start sc">
+  <div class="sc-inner">
+    <div class="sc-intro">
+      <p class="sc-eyebrow">Por onde começar?</p>
+      <h2 class="sc-title"><span>Informação para</span><span class="hl">identificar, prevenir e agir,</span><span>no seu ritmo</span></h2>
+    </div>
+    <div class="sc-actions">
+      <div class="sc-buttons"><a class="sc-btn sc-light" href="paginas/golpes.html">Ver os golpes</a><a class="sc-btn sc-dark" href="paginas/proteja-se.html">Boas Práticas</a></div>
+      <p class="sc-note">Sua segurança começa com a informação.</p>
+    </div>
+    <!-- cards de atalho; <svg> = ícone desenhado em código (vetor, não perde qualidade) -->
+    <div class="sc-cards"><a class="sc-card sc-card-1" href="paginas/golpes.html"><span class="sc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span><span class="sc-text"><strong>Conheça os golpes</strong><span>Descubra os golpes digitais mais comuns e aprenda a reconhecer ameaças antes que elas aconteçam.</span></span></a><a class="sc-card sc-card-2" href="paginas/proteja-se.html"><span class="sc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span class="sc-text"><strong>Aprenda a se proteger</strong><span>Conheça boas práticas de segurança para proteger seus dados, dispositivos e informações pessoais.</span></span></a><a class="sc-card sc-card-3" href="paginas/emergencia.html"><span class="sc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M4.9 4.9l4.3 4.3M14.8 14.8l4.3 4.3M14.8 9.2l4.3-4.3M4.9 19.1l4.3-4.3"/></svg></span><span class="sc-text"><strong>Saiba como agir</strong><span>Saiba o que fazer ao identificar uma ameaça, sofrer um golpe ou suspeitar de uma atividade maliciosa.</span></span></a></div>
+  </div>
+</section>
+<!-- Chamada para a simulação: cards de exemplo à esquerda e texto à direita -->
+<section class="sim-cta" id="teste">
+  <div class="container sim-grid">
+    <!-- aria-hidden="true": os cards são só ilustração, leitores de tela pulam -->
+    <div class="mock" aria-hidden="true">
+      <div class="mock-main">
+        <h3>Últimas mensagens</h3>
+        <ul>
+          <li><span class="av av-sms">SMS</span><span class="who"><b>Central de segurança</b><small>há 2 min</small></span><span class="tag bad">▼ Suspeita</span></li>
+          <li><span class="av av-wa">WA</span><span class="who"><b>“Mãe” (número novo)</b><small>há 1 hora</small></span><span class="tag bad">▼ Suspeita</span></li>
+          <li><span class="av av-em">@</span><span class="who"><b>Loja onde você comprou</b><small>há 1 dia</small></span><span class="tag good">▲ Legítima</span></li>
+        </ul>
+      </div>
+      <div class="mock-float">
+        <div class="mf-head"><span class="av av-sms">SMS</span><div><b>Central de segurança</b><small>Número desconhecido</small></div></div>
+        <p>“Seu acesso será bloqueado hoje. Confirme seus dados em: segur-anca.xyz”</p>
+        <div class="mf-actions"><span class="mf-btn">É legítima</span><span class="mf-btn main">É golpe</span></div>
+      </div>
+      <div class="mock-toast"><span class="ok">✓</span> Ótimo! Você identificou o golpe.</div>
+    </div>
+    <div class="sim-text">
+      <h2>Será que você <span class="hl">reconheceria um golpe</span> antes de cair?</h2>
+      <p>Mensagens falsas parecem cada vez mais reais. Teste seu olhar em situações fictícias de SMS, WhatsApp, e-mail e anúncios, e veja na hora quais sinais de alerta você deixou passar.</p>
+      <ul class="sim-points"><li>8 situações do dia a dia</li><li>Feedback imediato após cada resposta</li><li>Leva menos de 3 minutos</li></ul>
+      <a class="btn" href="paginas/simulacao.html">Fazer a simulação</a>
+    </div>
+  </div>
+</section>
+
+<!-- Blog: abas de categoria + carrossel de notícias de sites externos -->
+<section class="blog" id="blog">
+  <div class="container">
+    <div class="blog-top">
+      <div class="blog-head"><h2>Blog de cibersegurança</h2><p>Matérias de veículos externos sobre golpes e segurança digital.</p></div>
+      <!-- role="group" + aria-label: o leitor de tela anuncia "Categorias do blog" -->
+      <div class="blog-tabs" role="group" aria-label="Categorias do blog"><button type="button" class="blog-tab" data-cat="tendencias" data-desc="Números e panoramas que mostram como os golpes digitais avançam no Brasil." data-title="Tendências e dados" aria-pressed="true">Tendências e dados</button><button type="button" class="blog-tab" data-cat="pix" data-desc="Como os golpes com Pix funcionam e o que bancos e especialistas recomendam." data-title="Pix e fraudes" aria-pressed="false">Pix e fraudes</button><button type="button" class="blog-tab" data-cat="ia" data-desc="Como inteligência artificial e manipulação psicológica tornam as fraudes mais convincentes." data-title="IA e engenharia social" aria-pressed="false">IA e engenharia social</button><button type="button" class="blog-tab" data-cat="compras" data-desc="Alertas para quem compra online em períodos de grandes promoções." data-title="Compras e Black Friday" aria-pressed="false">Compras e Black Friday</button></div>
+    </div>
+    <div class="blog-body">
+      <div class="blog-side">
+        <h3 id="blog-cat-title">Tendências e dados</h3>
+        <p id="blog-cat-desc">Números e panoramas que mostram como os golpes digitais avançam no Brasil.</p>
+        <div class="blog-arrows">
+          <button type="button" id="blog-prev" aria-label="Notícias anteriores"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
+          <button type="button" id="blog-next" aria-label="Próximas notícias"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+      <div class="blog-track" id="blog-track" tabindex="0" role="region" aria-label="Notícias de cibersegurança"><a class="post" data-cat="tendencias" href="https://www.band.com.br/economia/noticias/golpes-digitais-crescem-20-e-atingem-media-de-quatro-casos-por-minuto-202607271446" target="_blank" rel="noopener"><img class="post-photo" src="imagens/blog/noticia-1.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="post-go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="post-body"><span class="post-meta">Band</span><span class="post-title">Golpes digitais crescem 20% e atingem média de quatro casos por minuto</span><span class="post-excerpt">Segundo a reportagem, os golpes digitais crescem 20% e já somam, em média, quatro casos por minuto.</span></span></a><a class="post" data-cat="tendencias" href="https://sbtnews.sbt.com.br/noticia/policia/golpes-virtuais-se-profissionalizam-e-fazem-56-milhoes-de-vitimas-no-brasil-drag" target="_blank" rel="noopener"><img class="post-photo" src="imagens/blog/noticia-2.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="post-go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="post-body"><span class="post-meta">SBT News · 02/11/2025</span><span class="post-title">Golpes virtuais se profissionalizam e fazem 56 milhões de vítimas no Brasil</span><span class="post-excerpt">Quadrilhas atuam em rede e na deep web; a matéria estima 56 milhões de vítimas em 12 meses e prejuízo próximo de R$ 112 bilhões.</span></span></a><a class="post" data-cat="tendencias" href="https://www.sicoob.com.br/web/sicoobcentralscrs/noticias/-/asset_publisher/xAioIawpOI5S/content/id/325352746" target="_blank" rel="noopener"><img class="post-photo" src="imagens/blog/noticia-3.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="post-go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="post-body"><span class="post-meta">Sicoob · 07/08/2026</span><span class="post-title">Brasil registra mais de 34 bilhões de tentativas de golpes digitais por ano, aponta estudo</span><span class="post-excerpt">Levantamento da Global Anti-Scam Alliance indica cerca de 34,5 bilhões de tentativas de golpe em 12 meses e prejuízos de R$ 21,2 bilhões.</span></span></a><a class="post" data-cat="pix" href="https://tecnoblog.net/noticias/febraban-lista-fraudes-golpes-envolvendo-pix/" target="_blank" rel="noopener"><img class="post-photo" src="imagens/blog/noticia-4.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="post-go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="post-body"><span class="post-meta">Tecnoblog</span><span class="post-title">Golpes com Pix: Febraban lista quatro tipos e ensina como evitá-los</span><span class="post-excerpt">A Febraban lista quatro tipos de golpes envolvendo o Pix e orienta como evitá-los.</span></span></a><a class="post" data-cat="pix" href="https://canaltech.com.br/mercado/golpe-do-pix-errado-explora-recurso-de-devolucao-veja-como-evitar/" target="_blank" rel="noopener"><img class="post-photo" src="imagens/blog/noticia-5.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="post-go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="post-body"><span class="post-meta">Canaltech · 13/08/2024</span><span class="post-title">Golpe do Pix errado explora recurso de devolução; veja como evitar</span><span class="post-excerpt">Criminosos pedem a devolução de um Pix para conta de terceiros. A Febraban orienta devolver apenas para a conta de origem.</span></span></a><a class="post" data-cat="ia" href="https://welivesecurity.com/pt/golpes-fraudes/ia-e-engenharia-social-devem-tornar-golpes-com-pix-mais-sofisticados-em-2026" target="_blank" rel="noopener"><img class="post-photo" src="imagens/blog/noticia-6.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="post-go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="post-body"><span class="post-meta">WeLiveSecurity · 23/01/2026</span><span class="post-title">IA e engenharia social devem tornar golpes com Pix mais sofisticados em 2026</span><span class="post-excerpt">Segundo a ESET, deepfakes e falsas centrais de atendimento tendem a ganhar escala; o comportamento do usuário segue sendo o maior desafio.</span></span></a><a class="post" data-cat="ia" href="https://dnbrasil.dn.pt/negcios-br/engenharia-social-responde-por-40-das-fraudes-financeiras-no-brasil" target="_blank" rel="noopener"><img class="post-photo" src="imagens/blog/noticia-7.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="post-go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="post-body"><span class="post-meta">DN Brasil · 22/08/2026</span><span class="post-title">Engenharia social responde por 40% das fraudes financeiras no Brasil</span><span class="post-excerpt">Levantamento da Quod aponta que a engenharia social responde por cerca de 40% dos indícios de fraude, com celular e Pix como principais canais.</span></span></a><a class="post" data-cat="compras" href="https://www.correio24horas.com.br/economia/golpes-com-inteligencia-artificial-e-pix-falso-ameacam-compras-da-black-friday-veja-como-se-proteger-1126" target="_blank" rel="noopener"><img class="post-photo" src="imagens/blog/noticia-8.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"><span class="post-go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="post-body"><span class="post-meta">Correio · 18/11/2026</span><span class="post-title">Golpes com inteligência artificial e Pix falso ameaçam compras da Black Friday</span><span class="post-excerpt">A matéria alerta para golpes com IA e Pix falso na Black Friday e orienta conferir links, dados do destinatário e usar cartões virtuais.</span></span></a></div>
+    </div>
+    <p class="blog-note">Notícias de cibersegurança de veículos externos, que abrem em nova aba. O Conecta Saber não é responsável pelo conteúdo de terceiros.</p>
+  </div>
+</section>
+
+<!-- Perguntas frequentes -->
+<section class="faq" id="perguntas">
+  <div class="container faq-grid">
+    <div class="faq-intro">
+      <h2 class="faq-title"><span>Perguntas</span> <span class="hl">frequentes</span></h2>
+      <p class="faq-sub">Respostas rápidas sobre cibersegurança para o seu dia a dia. Tire suas dúvidas antes de cair em um golpe.</p>
+      <div class="faq-help"><h3>Ainda tem dúvidas?</h3><p>Se você já caiu em um golpe, veja agora o passo a passo do que fazer.</p><a class="faq-btn" href="paginas/emergencia.html">Guia de emergência</a></div>
+    </div>
+    <div class="faq-list">
+<!-- <details> + <summary>: pergunta que abre e fecha ao clicar, sem precisar de JavaScript -->
+<details class="faq-item" name="faq" open><summary><span class="q">O que fazer ao receber uma mensagem suspeita?</span><span class="chev" aria-hidden="true">»</span></summary><div class="faq-a"><p>Não clique em links, não abra anexos e não responda. Confirme a informação por um canal oficial, digitando você mesmo o endereço do site ou ligando para o número oficial da empresa. Depois, apague a mensagem e, se possível, denuncie na plataforma.</p></div></details>
+<details class="faq-item" name="faq"><summary><span class="q">Como criar uma senha segura?</span><span class="chev" aria-hidden="true">»</span></summary><div class="faq-a"><p>Prefira frases longas, com 12 caracteres ou mais, que não tenham relação óbvia com você. Não repita a senha em contas diferentes e, se puder, use um gerenciador de senhas. Veja mais em <a href="paginas/proteja-se.html#senhas">Proteja-se</a>.</p></div></details>
+<details class="faq-item" name="faq"><summary><span class="q">O banco pode pedir minha senha ou um código por telefone?</span><span class="chev" aria-hidden="true">»</span></summary><div class="faq-a"><p>Não. Bancos não pedem senha, token nem códigos de verificação por ligação, mensagem ou e-mail. Se alguém pedir, desligue e ligue você mesmo para o número oficial, que fica no verso do cartão ou no aplicativo.</p></div></details>
+<details class="faq-item" name="faq"><summary><span class="q">Caí em um golpe. E agora?</span><span class="chev" aria-hidden="true">»</span></summary><div class="faq-a"><p>Aja rápido: avise o banco se houve movimentação financeira, troque as senhas das contas afetadas, guarde as provas e registre um boletim de ocorrência. O passo a passo está no <a href="paginas/emergencia.html">Guia de emergência</a>.</p></div></details>
+    </div>
+  </div>
+</section>
+</main>
+<!-- <footer>: rodapé com sobre, links e fontes -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="ft-top">
+      <p class="ft-tag">Conhecimento que conecta,<br>segurança que protege.</p>
+      <div class="ft-news">
+        <p class="ft-news-t" id="ft-news-t">Acesse informações e aprenda mais!</p>
+        <!-- formulário de e-mail do rodapé; type="email" e required: o navegador já confere se é um e-mail -->
+        <form class="ft-form" id="ft-form" novalidate aria-labelledby="ft-news-t">
+          <label class="sr-only" for="ft-email">Seu e-mail</label>
+          <input type="email" id="ft-email" name="email" placeholder="Digite seu e-mail" autocomplete="email" required>
+          <button type="submit">Inscrever-se</button>
+        </form>
+        <p class="ft-msg" id="ft-msg" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="ft-cols">
+      <div>
+        <h3>Sobre o Conecta Saber</h3>
+        <p>O Conecta Saber ajuda a ampliar a segurança digital no dia a dia, facilitando a identificação de golpes e uma navegação mais segura.</p>
+      </div>
+      <div>
+        <h3>Navegue</h3>
+        <ul><li><a href="index.html">Início</a></li><li><a href="paginas/golpes.html">Conheça os golpes</a></li><li><a href="paginas/proteja-se.html">Proteja-se</a></li><li><a href="paginas/simulacao.html">Simulação e emergência</a></li><li><a href="paginas/glossario.html">Glossário</a></li><li><a href="paginas/contato.html">Contato</a></li></ul>
+      </div>
+      <div>
+        <h3>Fontes</h3>
+        <ul>
+          <!-- target="_blank" abre em nova aba; rel="noopener" é por segurança -->
+          <li><a href="https://cartilha.cert.br/" target="_blank" rel="noopener">Cartilha de Segurança (CERT.br)</a></li>
+          <li><a href="https://www.gov.br/pt-br" target="_blank" rel="noopener">Portal gov.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copy">© 2026 Conecta Saber – projeto acadêmico de caráter educativo. As orientações têm finalidade informativa.</p>
+  </div>
+</footer>
+</body>
+</html>

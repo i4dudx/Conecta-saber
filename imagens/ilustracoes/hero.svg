@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 360" role="img" aria-label="Escudo com cadeado conectado por linhas de rede">
+  <defs><linearGradient id="s" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1e4bff"/><stop offset="1" stop-color="#1e4bff"/></linearGradient></defs>
+  <g stroke="#ffffff" stroke-opacity=".5" stroke-width="1.5" fill="none">
+    <path d="M200 180 60 80M200 180 350 70M200 180 40 250M200 180 360 270M60 80h60M350 70h-50M40 250h70M360 270h-60"/></g>
+  <g fill="#0c1a24" stroke="#ffffff" stroke-width="2"><circle cx="60" cy="80" r="9"/><circle cx="350" cy="70" r="9"/><circle cx="40" cy="250" r="9"/><circle cx="360" cy="270" r="9"/></g>
+  <path d="M200 40 100 78v78c0 70 42 118 100 140 58-22 100-70 100-140V78z" fill="url(#s)" stroke="#ffffff" stroke-opacity=".4" stroke-width="3"/>
+  <rect x="160" y="168" width="80" height="62" rx="10" fill="#ffffff"/>
+  <path d="M175 168v-18a25 25 0 0 1 50 0v18" fill="none" stroke="#ffffff" stroke-width="12"/>
+  <circle cx="200" cy="195" r="8" fill="#ffffff"/><rect x="196" y="199" width="8" height="18" rx="3" fill="#ffffff"/>
+</svg>
