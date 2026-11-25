@@ -1,5 +1,5 @@
 /* ==========================================================
-   ANIMAÇÕES: decide quando cada elemento anima (o visual fica no style.css).
+   ANIMAÇÕES: decide quando cada elemento anima (o visual fica no motion.css).
    Se a pessoa preferir menos movimento, nada é animado.
    ========================================================== */
 
