@@ -41,7 +41,18 @@ function iniciarMenu() {
 }
 
 /* ---------- Formulário de contato -> WhatsApp ---------- */
-// monta a mensagem com os dados do formulário e abre o WhatsApp com ela pronta para enviar
+// enviarWhatsApp: monta a mensagem e abre o WhatsApp com ela pronta para enviar
+function enviarWhatsApp(nome, assunto, mensagem) {
+  const texto = "Olá! Vim pelo site Conecta Saber.\n\nNome: " + nome + "\nAssunto: " + assunto + "\n\n" + mensagem;
+  // encodeURIComponent = transforma o texto (acentos, espaços, quebras de linha) num formato que pode ir no link
+  const link = "https://wa.me/" + CONTATO_WHATSAPP + "?text=" + encodeURIComponent(texto);
+  // window.open = abre o WhatsApp numa nova aba (no celular, abre o aplicativo)
+  const aba = window.open(link, "_blank");
+  // se o navegador bloquear a nova aba, abre o WhatsApp na própria página
+  if (aba) aba.opener = null; else window.location.href = link;
+}
+
+// liga o botão "Enviar pelo WhatsApp" do formulário à função enviarWhatsApp
 function iniciarFormulario() {
   const form = document.getElementById("form-contato");
   if (!form) return;
@@ -52,7 +63,7 @@ function iniciarFormulario() {
     status.textContent = texto;
   }
 
-  // "submit" = quando a pessoa envia o formulário
+  // "submit" = quando a pessoa clica no botão de envio
   form.addEventListener("submit", (e) => {
     // preventDefault = impede o navegador de recarregar a página
     e.preventDefault();
@@ -64,13 +75,7 @@ function iniciarFormulario() {
       mostrar("Preencha todos os campos para continuar.", true);
       return;
     }
-    const texto = "Olá! Vim pelo site Conecta Saber.\n\nNome: " + nome + "\nAssunto: " + assunto + "\n\n" + mensagem;
-    // encodeURIComponent = transforma o texto (acentos, espaços, quebras de linha) num formato que pode ir no link
-    const link = "https://wa.me/" + CONTATO_WHATSAPP + "?text=" + encodeURIComponent(texto);
-    // window.open = abre o WhatsApp numa nova aba (no celular, abre o aplicativo)
-    const aba = window.open(link, "_blank");
-    // se o navegador bloquear a nova aba, abre o WhatsApp na própria página
-    if (aba) aba.opener = null; else window.location.href = link;
+    enviarWhatsApp(nome, assunto, mensagem);
     form.reset();
     mostrar("Abrimos o WhatsApp com a sua mensagem pronta. É só tocar em enviar.", false);
   });
